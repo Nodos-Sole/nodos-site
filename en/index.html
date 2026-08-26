@@ -105,6 +105,7 @@
   .row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px clamp(24px,4vw,64px);padding:clamp(22px,2.6vw,34px) 0;border-top:1px solid var(--line)}
   .row:last-child{border-bottom:1px solid var(--line)}
   .row h3{font-size:clamp(19px,1.7vw,24px);line-height:1.45}
+  .row .body{display:flex;flex-direction:column;gap:14px}
   .row p{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:52ch}
 
   .dark{background:var(--dark);color:#f4f4f0}
@@ -154,8 +155,8 @@
 <nav>
   <div class="inner">
     <span class="logo"><span class="dot"></span>NODOS<span class="latin">ELECTRICITY</span></span>
-    <a href="#why">Why now</a>
-    <a href="#flow">The flow</a>
+    <a href="#why">Why</a>
+    <a href="#start">The start</a>
     <a href="#doing">What I'm doing</a>
     <a href="#numbers">Numbers</a>
     <a href="#faq">Questions</a>
@@ -183,14 +184,14 @@
   <div class="inner">
     <div>
       <p>That is a large sentence, so here is the small one underneath it.</p>
-      <p><strong>I am one person in Seoul with a south facing balcony.</strong> No company, no team, no product, no funding. I studied accounting, not engineering.</p>
-      <p>I am starting with the smallest version of the idea that I can actually touch, learning the physics from zero, and publishing all of it. Including the parts that do not work.</p>
+      <p><strong>I am one person in Seoul.</strong> No company, no team, no product, no funding. I did not study engineering.</p>
+      <p>I am starting with the smallest version of the idea that I can actually hold in my hand, learning the physics from zero, and publishing all of it. Including the parts that do not work.</p>
     </div>
     <div>
-      <p>Korea is a strange place to try this. The balcony solar programme collapsed in 2021. 68 companies took government subsidies, 14 of them shut down within three years, 11 within a single year. A national audit found companies that took the money and installed nothing at all. Seoul cancelled its subsidy in 2022 and has not brought it back.</p>
-      <p><strong>So the gap here is not technology or price. It is that nobody believes anyone.</strong> My bet is that one ordinary person showing the whole thing in public is worth more in that market than another company with a good looking website.</p>
+      <p>The first product folds a solar panel and a battery into one piece to carry, and separates easily into two to use. Nothing on the market does both.</p>
+      <p><strong>The bet is that one ordinary person building this in public, and showing the failures, is worth more than another company with a good looking website.</strong></p>
       <div class="btns">
-        <a href="#try" class="btn btn-dark">Try the 3D tool</a>
+        <a href="#start" class="btn btn-dark">Where this starts</a>
         <a href="#numbers" class="btn btn-line">See the numbers</a>
       </div>
     </div>
@@ -203,7 +204,7 @@
     <div data-tilt>
       <span class="num">01 / MAKE</span>
       <h3>Make it yourself</h3>
-      <p>First question: does it even work without a roof. One south facing balcony, measured and calculated before anything gets bought.</p>
+      <p>First question: does it work without a power plant. One panel a person can carry, measured and calculated before anything gets bought.</p>
     </div>
     <div data-tilt>
       <span class="num">02 / USE</span>
@@ -218,136 +219,190 @@
   </div>
 </div>
 
+<section id="why" class="band rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>Why</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">Electricity is becoming a matter of personal security</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(34px,4vw,50px);max-width:50ch">The four rows below are my judgement, not established fact. But this judgement is why I started, so I state it as judgement and write it down as it is.</p>
+
+    <div class="stage-row" data-reveal>
+      <span class="when">Demand</span>
+      <p><b>It rises from two directions at once.</b> One is climate and conflict. Longer summers and winters mean heating and cooling run longer, and in places with conflict there are still people whose lives are cut short by unstable power. The other is national industry: AI and data centres, semiconductors, robotics, and healthcare. Healthcare in particular cannot stop for a single day.</p>
+    </div>
+    <div class="stage-row" data-reveal>
+      <span class="when">The state</span>
+      <p><b>No country can give up those industries.</b> Falling behind there is a security problem.</p>
+    </div>
+    <div class="stage-row" data-reveal>
+      <span class="when">The limit</span>
+      <p><b>You cannot double a country's electricity overnight.</b> The only thing left is to divide it.</p>
+    </div>
+    <div class="stage-row" data-reveal>
+      <span class="when">So</span>
+      <p><b>That pressure ends up on individuals.</b> Usage gets capped, or prices rise, or both.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band-sm rule tint">
+  <div class="inner">
+    <h2 class="h2" data-reveal style="margin-bottom:10px;max-width:20ch">So let us divide the roles</h2>
+  </div>
+</section>
+<div class="rule">
+  <div class="three" data-reveal-group style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div data-tilt>
+      <span class="num">POWER FOR NATIONAL INDUSTRY</span>
+      <h3>Large actors keep carrying it</h3>
+      <p>AI, data centres, robotics, semiconductors, healthcare. An individual cannot do any of this. That is the part a country has to build big.</p>
+    </div>
+    <div data-tilt>
+      <span class="num">POWER AN INDIVIDUAL USES</span>
+      <h3>Individuals carry their own</h3>
+      <p>Make what you use, use it easily, and buy or sell the difference with a neighbour. That is the part individuals can hold in small pieces.</p>
+    </div>
+  </div>
+</div>
+<section class="band-sm rule">
+  <div class="inner">
+    <p class="lede" data-reveal style="max-width:54ch">Then the country secures the power its industry needs, and <b>individuals hold a share nobody else controls.</b> And once generation is scattered across thousands of places, one failure no longer takes everything down with it.</p>
+  </div>
+</section>
+
+<section class="dark band">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>Why it is possible now</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">Solar is the only one that loses nothing when you divide it</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(34px,4vw,48px);max-width:50ch">This is the single reason the sentence at the top is a physical possibility rather than a slogan.</p>
+    <div class="steps" data-reveal-group style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <div data-tilt>
+        <span class="num">UNTIL NOW</span>
+        <h4>We made electricity by spinning something</h4>
+        <p>Spun by water, by steam, by wind. Coal and nuclear both come down to boiling water to spin a turbine. Plants like that get better the bigger they are, so splitting them is a loss. Electricity has always belonged to large groups.</p>
+      </div>
+      <div data-tilt>
+        <span class="num">SOLAR</span>
+        <h4>It spins nothing at all</h4>
+        <p>Light hits a semiconductor and electrons move immediately. No moving parts, no fuel, and no penalty for dividing it. A hundred panels of one square metre work exactly like one panel of a hundred.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:28px;color:var(--on-dark-2)">So it can be cut into a hundred pieces and held by a hundred people. A water wheel the size of a palm turns nothing. A panel the size of a palm still works.</p>
+  </div>
+</section>
+
+<section id="start" class="band rule tint">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>The start</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">The destination is the home. The start is the hand</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(34px,4vw,50px);max-width:52ch">Individuals making the electricity they use at home. That is where this goes in the end. It is just not where it begins.</p>
+
+    <div class="row" data-reveal>
+      <h3>Why not start with the home</h3>
+      <div class="body">
+        <p>In August 2026 I sat down with an expert at the Seoul product development centre. I was told that in a country where the grid is as reliable as Korea's, household solar struggles to find demand, and he pointed me toward something portable instead. It was the opposite of my hypothesis, so I wrote it down exactly as he said it.</p>
+        <p>And putting solar on a home drags a lot of things along with it. Building rules, installer licensing, grid interconnection, subsidy paperwork. You get blocked by procedure before you get to build anything.</p>
+      </div>
+    </div>
+
+    <div class="row" data-reveal>
+      <h3>So it starts with something you hold</h3>
+      <div class="body">
+        <p>No permit needed, usable the day you buy it, and if it does not work you find out immediately. It is the fastest place to learn.</p>
+        <p>Right now you buy a panel and a battery separately and join them with a cable. One product did combine them, but its built in panel was so small it took days to fill, and reviews call it decoration. It is currently out of stock.</p>
+        <p><b>One piece when you carry it, two pieces when you use it.</b> That is the first product.</p>
+      </div>
+    </div>
+
+    <div class="row" data-reveal>
+      <h3>The same technology leads back to the home</h3>
+      <div class="body">
+        <p>Whether it sits in your hand or on your wall, what is inside is the same. A solar panel, a battery, and the circuitry that moves power between them. What works small can work large.</p>
+        <p>Prove the structure with the small one, then widen it to the home. <b>The destination has not changed. It is the same three sentences at the top of this page.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="flow" class="band-sm rule">
   <div class="inner">
     <span class="eyebrow" data-reveal>The flow</span>
-    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:26ch">From sunlight to the flat next door</h2>
-    <p class="lede" data-reveal style="margin-bottom:clamp(30px,3.6vw,48px);max-width:48ch">Power made on a balcony is used in that home first. Only the surplus moves on. The third step is drawn here but is not legal yet.</p>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:26ch">Four steps, from sunlight to the thing in your hand</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(30px,3.6vw,48px);max-width:50ch">Unfolded it is a panel and a battery. Folded it is one piece. The last step, trading with a neighbour, is drawn faintly because it is not legal yet.</p>
     <div class="flow-scroll" data-reveal>
-      <svg viewBox="0 0 900 212" role="img" aria-label="Sunlight reaches a solar module on an apartment balcony, the household uses it first, and any surplus flows to a neighbouring flat">
+      <svg viewBox="0 0 900 212" role="img" aria-label="Sunlight reaches an unfolded solar panel, the power is stored in a battery, used by devices, and any surplus flows to a neighbour">
         <g class="flow-dash" stroke="#ffd12e" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="10 22">
-          <path d="M100 74L232 98" /><path d="M468 112h146" />
+          <path d="M84 76L172 104" /><path d="M352 120h72" /><path d="M556 120h64" />
         </g>
-        <circle cx="72" cy="58" r="24" fill="#ffd12e" />
+        <g stroke="#c9c6bb" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="8 16"><path d="M786 120h74" /></g>
+        <circle cx="54" cy="58" r="22" fill="#ffd12e" />
         <g stroke="#ffd12e" stroke-width="3" stroke-linecap="round" fill="none">
-          <path d="M72 16v10M72 90v10M30 58h10M104 58h10M43 29l7 7M94 80l7 7M101 29l-7 7M50 80l-7 7" />
+          <path d="M54 18v10M54 88v10M14 58h10M84 58h10M26 30l7 7M75 80l7 7M82 30l-7 7M33 80l-7 7" />
+        </g>
+        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round" fill="#18293a">
+          <path d="M186 148L214 66l44 0-18 82z" /><path d="M244 148L262 66l44 0-8 82z" /><path d="M302 148L310 66l40 0 2 82z" />
+        </g>
+        <g stroke="#4b6a86" stroke-width="1.4" fill="none">
+          <path d="M196 122h48M204 98h48M210 78h46" /><path d="M252 122h48M258 98h48M264 78h44" /><path d="M308 122h44M310 98h42M312 78h40" />
+        </g>
+        <g stroke="#101418" stroke-width="2.5" stroke-linecap="round">
+          <path d="M182 152h176" /><path d="M270 152l-26 30M290 152l26 30" />
         </g>
         <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
-          <rect x="240" y="44" width="220" height="132" fill="#ffffff" />
-          <rect x="252" y="50" width="196" height="28" fill="#c9d6d8" stroke-width="1.5" />
-          <rect x="252" y="116" width="196" height="28" fill="#c9d6d8" stroke-width="1.5" />
-          <rect x="254" y="80" width="192" height="24" fill="#f2f0e9" stroke-width="2" />
-          <rect x="254" y="146" width="192" height="24" fill="#f0efe8" stroke-width="2" />
-          <g stroke="#a9aca6" stroke-width="1.5">
-            <path d="M286 82v20M318 82v20M350 82v20M382 82v20M414 82v20" />
-            <path d="M286 148v20M318 148v20M350 148v20M382 148v20M414 148v20" />
-          </g>
-          <path d="M240 106h220M240 172h220" stroke-width="3" />
-          <rect x="292" y="88" width="116" height="16" fill="#18293a" stroke="#18293a" />
-          <path d="M292 88h116" stroke="#ffd12e" stroke-width="3" />
-          <path d="M310 104v9M390 104v9" stroke-width="2.5" />
+          <rect x="428" y="74" width="126" height="86" rx="8" fill="#ffffff" />
+          <path d="M462 74v-9a10 10 0 0 1 10-10h38a10 10 0 0 1 10 10v9" fill="none" />
+          <rect x="444" y="90" width="60" height="30" rx="4" fill="#18293a" stroke="#18293a" />
+          <path d="M444 112h60" stroke="#ffd12e" stroke-width="4" />
+          <circle cx="528" cy="105" r="7" fill="#ffd12e" />
+          <path d="M446 138h26M486 138h26" stroke-width="3" />
         </g>
         <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
-          <rect x="620" y="44" width="220" height="132" fill="#ffffff" />
-          <rect x="632" y="50" width="196" height="28" fill="#e6e4dc" stroke-width="1.5" />
-          <rect x="632" y="116" width="196" height="28" fill="#e6e4dc" stroke-width="1.5" />
-          <rect x="634" y="80" width="192" height="24" fill="#f0efe8" stroke-width="2" />
-          <rect x="634" y="146" width="192" height="24" fill="#f0efe8" stroke-width="2" />
-          <g stroke="#a9aca6" stroke-width="1.5">
-            <path d="M666 82v20M698 82v20M730 82v20M762 82v20M794 82v20" />
-            <path d="M666 148v20M698 148v20M730 148v20M762 148v20M794 148v20" />
-          </g>
-          <path d="M620 106h220M620 172h220" stroke-width="3" />
+          <rect x="628" y="80" width="44" height="76" rx="7" fill="#ffffff" />
+          <path d="M640 92h20" stroke-width="3" />
+          <circle cx="726" cy="106" r="24" fill="#ffd12e" />
+          <path d="M726 82v-8M702 106h-9M750 106h9M709 89l-6-6M743 89l6-6" fill="none" stroke-width="2.5" stroke-linecap="round" />
+          <rect x="714" y="130" width="24" height="12" rx="3" fill="#ffffff" />
         </g>
-        <g font-family="Figtree, sans-serif" font-size="15" fill="#43484d">
-          <text x="72" y="200" text-anchor="middle">Sunlight</text>
-          <text x="350" y="200" text-anchor="middle" fill="#101418" font-weight="600">Our balcony, used here first</text>
-          <text x="730" y="200" text-anchor="middle">Surplus to a neighbour (not yet legal)</text>
+        <g stroke="#c9c6bb" stroke-width="2.5" stroke-linejoin="round" fill="#ffffff">
+          <path d="M812 152v-52l30-24 30 24v52z" /><path d="M832 152v-28h20v28" />
+        </g>
+        <g font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="15" fill="#43484d">
+          <text x="54" y="196" text-anchor="middle">Sunlight</text>
+          <text x="268" y="196" text-anchor="middle" fill="#101418" font-weight="600">Unfolded panel</text>
+          <text x="491" y="196" text-anchor="middle" fill="#101418" font-weight="600">Into the battery</text>
+          <text x="690" y="196" text-anchor="middle" fill="#101418" font-weight="600">You use it first</text>
+          <text x="842" y="196" text-anchor="middle" fill="#8d8f8a">To a neighbour<tspan x="842" dy="17">(not yet)</tspan></text>
         </g>
       </svg>
     </div>
-  </div>
-</section>
-
-<section id="try" class="band-sm rule tint">
-  <div class="inner">
-    <div class="try">
-      <div>
-        <span class="eyebrow" data-reveal>Try it</span>
-        <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:22ch">Find out what one pane of glass costs you</h2>
-        <p data-reveal>Most people in Seoul live in apartments, so the starting point is not a roof. It is a balcony. And that creates a fork: do you hang the module outside the railing, or stand it inside the window?</p>
-        <p data-reveal>Outside performs better but you have to get past building rules and the risk of something falling twelve floors. Inside is easy to install but the light passes through one more pane of glass. Saying that costs you some watts means nothing. So here it is as something you can press.</p>
-        <p data-reveal>Switch between <b>outside the railing</b> and <b>inside the window</b>. Change the glass type and the loss appears immediately. Use ＋ for more modules, the slider to move the sun, and drag to rotate.</p>
-        <p class="caveat" data-reveal>I chose inside the window for my own flat, so the lower number is the one I will actually live with. This is a calculation, not a measurement. Once something is physically installed I will replace these numbers with measured ones.</p>
-      </div>
-      <div class="viewer-wrap" data-reveal>
-        <balcony-viewer lang="en" style="width:100%"></balcony-viewer>
-      </div>
-    </div>
-  </div>
-</section>
-
-<figure class="photo">
-  <div class="photo-pair">
-    <div class="shot">
-      <img src="../img/roof.jpg" alt="A detached house with solar modules covering the whole roof" loading="lazy" width="1400" height="933">
-      <p class="cap"><b>With a roof</b> you get space, you can lay the panels flat, and you can set the angle.</p>
-    </div>
-    <div class="shot">
-      <img src="../img/balcony.jpg" alt="Solar modules hung on the outside of several apartment balcony railings" loading="lazy" width="1400" height="933">
-      <p class="cap"><b>In an apartment</b> you get one railing and one or two modules, standing upright because they cannot be laid flat.</p>
-    </div>
-  </div>
-  <figcaption>Both are reference photographs.</figcaption>
-</figure>
-
-<section id="why" class="band rule">
-  <div class="inner">
-    <span class="eyebrow" data-reveal>Why now</span>
-    <h2 class="h2" data-reveal style="margin-bottom:clamp(36px,4vw,56px);max-width:26ch">The reasons to wait are disappearing one by one</h2>
-
-    <div class="row" data-reveal>
-      <h3>The machines are ready. What is left is paperwork</h3>
-      <p>Panels, inverters and meters are things an individual can now handle. What actually stops people is not knowing what to file, where, and in what order. That is the part I am walking into myself so I can write the sequence down.</p>
-    </div>
-
-    <div class="row" data-reveal>
-      <h3>The country reopened it. Seoul has not</h3>
-      <p>Seoul announced the end of its balcony solar subsidy in September 2021 and stopped it from 2022. It has never returned. In April 2026 a national programme for household balcony solar was added in a supplementary budget, aiming at 100,000 homes. Whether an individual in Seoul can apply to it is something I have not been able to confirm from the original notice yet. When I confirm it, it goes up here with the source.</p>
-    </div>
-
-    <div class="row" data-reveal>
-      <h3>Standing on the selling side changes what you see</h3>
-      <p>Someone who can make electricity stands somewhere different from someone who can only buy it. It is less an argument about bills than about who decides.</p>
-    </div>
+    <p class="note" style="margin-top:18px">Folded, the panel and the battery become a single object. One piece to carry, two pieces to use.</p>
   </div>
 </section>
 
 <section id="doing" class="dark band">
   <div class="inner">
-    <span class="eyebrow" data-reveal>What I am doing</span>
-    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:26ch">Four steps, starting from one balcony</h2>
+    <span class="eyebrow" data-reveal>What I'm doing</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:26ch">Four steps</h2>
     <p class="lede" data-reveal style="margin-bottom:clamp(36px,4vw,56px);max-width:48ch">In order, and written down whether it works or not.</p>
     <div class="steps" data-reveal-group>
       <div data-tilt>
         <span class="num">01</span>
-        <h4>Measure the balcony</h4>
-        <p>South facing. Direct sun from 12:00 to 15:00. The panel goes inside the window. This part is confirmed.</p>
+        <h4>Narrow the customer</h4>
+        <p>Read real measurements posted by campers, and go through reviews of what already exists. This part is done.</p>
       </div>
       <div data-tilt>
         <span class="num">02</span>
-        <h4>Calculate the output</h4>
-        <p>How many watt hours a day, and what one pane of glass takes away. No number goes up without a source.</p>
+        <h4>Fix the numbers</h4>
+        <p>How many watt hours, filled in how many hours, under what weight. The shape only follows once these are set.</p>
       </div>
       <div data-tilt>
         <span class="num">03</span>
-        <h4>Build it</h4>
-        <p>Buy a power station and a panel and install them myself. There is no money yet, so there is no date.</p>
+        <h4>Build the form</h4>
+        <p>Model the join and release in 3D. The test is whether it works one handed, and whether it works wearing gloves.</p>
       </div>
       <div data-tilt>
         <span class="num">04</span>
         <h4>Write all of it down</h4>
-        <p>What worked, what did not, and what I got wrong. There are already enough records in this market that only mention the good parts.</p>
+        <p>What worked, what did not, and what I got wrong. There are already enough records that only include the good parts.</p>
       </div>
     </div>
   </div>
@@ -361,19 +416,19 @@
 
     <div class="stats" data-reveal-group>
       <div data-tilt>
-        <p class="stat"><span data-count="0.9" data-decimals="1">0.9</span><span class="unit"> kW</span></p>
-        <p>Rated capacity of three 300W modules. The maximum in the drawing above. A calculated figure</p>
+        <p class="stat"><span data-count="0" data-decimals="0">0</span><span class="unit"> built</span></p>
+        <p>Prototypes made so far. Nothing has been built yet</p>
       </div>
       <div data-tilt>
         <p class="stat"><span data-count="3" data-decimals="0">3</span><span class="unit"> hours</span></p>
-        <p>Direct sun on this balcony, 12:00 to 15:00. Observed, not estimated</p>
+        <p>Target time to fill 300 watt hours. A goal, not a measurement</p>
       </div>
       <div data-tilt>
-        <p class="stat"><span data-count="0" data-decimals="0">0</span><span class="unit"> installed</span></p>
-        <p>Systems actually built so far. Nothing has been made yet</p>
+        <p class="stat"><span data-count="1" data-decimals="0">1</span><span class="unit"> person</span></p>
+        <p>People working on this. Looking for someone who knows circuits</p>
       </div>
     </div>
-    <p class="note">These are real values, not placeholders. They get corrected the moment they change.</p>
+    <p class="note">The one combined product that existed took fifteen to twenty hours to fill. Three hours is the target set against that.</p>
 
     <blockquote data-reveal>“You do not have to be a genius. If an ordinary person can do it with their own hands, then other ordinary people can too.”<span class="who">Why this record exists</span></blockquote>
   </div>
@@ -386,15 +441,15 @@
 
     <div class="stage-row" data-reveal>
       <span class="when">Late 2026</span>
-      <p>Turn the balcony output into a number. Narrow the parts down to one choice. Publish the first write up.</p>
+      <p>Fix the target numbers. Model the join and release in 3D. Find someone who knows circuits.</p>
     </div>
     <div class="stage-row" data-reveal>
       <span class="when">No date yet</span>
-      <p>Buy the parts as soon as there is money and build the first system. Publish the whole process including the receipts.</p>
+      <p>Buy the parts as soon as there is money and build the first prototype. Publish the whole process including the receipts.</p>
     </div>
     <div class="stage-row" data-reveal>
       <span class="when">After that</span>
-      <p>If somebody wants to build the same thing, build it with them. Neighbour to neighbour trading waits on the regulation.</p>
+      <p>Put it in the hands of someone who will actually use it and listen to what annoys them. Neighbour to neighbour trading waits on the regulation.</p>
     </div>
 
     <p class="note">Where I am not confident about a date, I have written that I am not confident. It moves with the money.</p>
@@ -415,8 +470,8 @@
         <p>No. No legal entity, no team. One person. NODOS is the name I keep the things I build under.</p>
       </div>
       <div>
-        <h4>Does this work without a roof?</h4>
-        <p>I do not have a roof either. One south facing balcony is the starting point, which is exactly why this should be useful to people living in apartments.</p>
+        <h4>Doesn't this already exist?</h4>
+        <p>Panels and batteries exist, but you buy them separately and join them with a cable. One product combined them, and its built in panel was too small to matter. Combining them while keeping a panel worth using is the problem I am trying to solve.</p>
       </div>
       <div>
         <h4>What does it cost?</h4>
@@ -429,6 +484,25 @@
       <div>
         <h4>What about cloudy days and night?</h4>
         <p>You draw from the grid, exactly as now. This is a beginning, not independence, and it seems better to say so at the start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="band rule tint">
+  <div class="inner">
+    <div class="try">
+      <div>
+        <span class="eyebrow" data-reveal>Just for fun</span>
+        <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">Find out what one pane of glass costs you</h2>
+        <p class="note" data-reveal style="margin-bottom:18px">This has nothing to do with what I am building now. It was made before the direction changed, so it sits down here instead of being deleted.</p>
+        <p data-reveal>Putting solar on an apartment creates a fork: do you hang the module outside the railing, or stand it inside the window? Outside performs better but you have to get past building rules and the risk of something falling twelve floors. Inside is easy to install but the light passes through one more pane of glass.</p>
+        <p data-reveal>Saying that costs you some watts means nothing. So here it is as something you can press.</p>
+        <p data-reveal>Switch between <b>outside the railing</b> and <b>inside the window</b>. Change the glass type and the loss appears immediately. Use ＋ for more modules, the slider to move the sun, and drag to rotate.</p>
+        <p class="caveat" data-reveal>These are calculated numbers, not measured ones.</p>
+      </div>
+      <div class="viewer-wrap" data-reveal>
+        <balcony-viewer lang="en" style="width:100%"></balcony-viewer>
       </div>
     </div>
   </div>

@@ -143,6 +143,7 @@
   .row:last-child{border-bottom:1px solid var(--line)}
   .row h3{font-size:clamp(19px,1.7vw,24px);line-height:1.45}
   .row p{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:52ch}
+  .row .body{display:flex;flex-direction:column;gap:14px}
 
   /* 네 단계 */
   .dark{background:var(--dark);color:#f4f4f0}
@@ -208,8 +209,8 @@
 <nav>
   <div class="inner">
     <span class="logo"><span class="dot"></span>NODOS<span class="latin">전기</span></span>
-    <a href="#now">왜 지금인가</a>
-    <a href="#flow">전기의 흐름</a>
+    <a href="#why">왜 이렇게 생각했나</a>
+    <a href="#start">어디서 시작하나</a>
     <a href="#steps">지금 하는 일</a>
     <a href="study/index.html">공부</a>
     <a href="#numbers">숫자</a>
@@ -237,7 +238,7 @@
       <p>전기를 만드는 일은 오랫동안 큰 발전소의 몫이었습니다. 이제 한 사람도 할 수 있는지, 평범한 한 사람이 직접 해보고 전부 적으려고 합니다.</p>
       <p>아직 제품도 시제품도 없습니다. 오늘 있는 것은 이 기록과 하나 확실해진 방향뿐입니다.</p>
       <div class="btns">
-        <a href="#turn" class="btn btn-dark">방향을 바꾼 기록</a>
+        <a href="#start" class="btn btn-dark">어디서 시작하나</a>
         <a href="#flow" class="btn btn-line">전기의 흐름 보기</a>
       </div>
     </div>
@@ -266,113 +267,179 @@
 </div>
 
 
-<section id="turn" class="band rule tint">
+
+<section id="why" class="band rule">
   <div class="inner">
-    <span class="eyebrow" data-reveal>방향을 바꾼 기록 / THE TURN</span>
-    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">2026년 8월, 방향을 바꿨습니다</h2>
-    <p class="lede" data-reveal style="margin-bottom:clamp(32px,4vw,48px);max-width:50ch">베란다에 고정하는 쪽에서 들고 다니는 쪽으로 옮겼습니다. 아래에 그 전 방향으로 만든 것들이 그대로 남아 있습니다. 지우지 않습니다.</p>
+    <span class="eyebrow" data-reveal>왜 이렇게 생각했나 / WHY</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:22ch">전기는 앞으로 개인의 안보입니다</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(34px,4vw,50px);max-width:48ch">아래 네 칸은 확정된 사실이 아니라 제 판단입니다. 다만 이 판단 때문에 시작했으니, 판단이라고 밝히고 그대로 적습니다.</p>
 
-    <div class="row" data-reveal>
-      <h3>무슨 말을 들었나</h3>
-      <p>서울시 제품화지원센터에서 전문가 상담을 받았습니다. 한국처럼 전기가 잘 들어오는 곳에서 가정용은 수요가 나오기 어렵다는 말을 들었고, 그 자리에서 캠핑 쪽을 권유받았습니다. 제 가설에 반대되는 답이라 그대로 받아 적었습니다.</p>
+    <div class="stage-row" data-reveal>
+      <span class="when">수요</span>
+      <p><b>두 곳에서 동시에 늘어납니다.</b> 하나는 기후와 분쟁입니다. 여름과 겨울이 길어지면 냉난방을 더 오래 켜게 되고, 분쟁이 있는 곳에는 여전히 불안정한 전력 공급 때문에 삶을 온전히 누리지 못하는 이들이 있습니다. 둘은 국가 산업입니다. 인공지능과 데이터센터, 반도체, 로봇, 그리고 의료. 특히 의료는 하루도 멈출 수 없습니다.</p>
     </div>
-
-    <div class="row" data-reveal>
-      <h3>그래서 무엇이 바뀌었나</h3>
-      <p>만들려는 것은 태양광 패널과 배터리를 한 덩어리로 들고 다니다가, 쓸 때는 쉽게 나뉘는 휴대용 발전기입니다. 지금은 패널과 배터리를 따로 사서 케이블로 이어야 합니다. 합친 물건이 세상에 하나 있었는데 내장 패널이 너무 작아 며칠을 받아야 다 찼고, 리뷰에 장식이라는 말이 나왔습니다. 지금은 품절입니다.</p>
+    <div class="stage-row" data-reveal>
+      <span class="when">국가</span>
+      <p><b>이 산업들을 포기할 수 없습니다.</b> 여기서 밀리면 그게 곧 안보이기 때문입니다.</p>
     </div>
-
-    <div class="row" data-reveal>
-      <h3>바뀌지 않은 것</h3>
-      <p>맨 위에 적어둔 세 문장입니다. 스스로 만들고, 쉽게 쓰고, 남으면 넘긴다. 제품의 모양이 바뀐 것이지 가려는 곳이 바뀐 것은 아닙니다.</p>
+    <div class="stage-row" data-reveal>
+      <span class="when">한계</span>
+      <p><b>전기를 하루아침에 두 배로 만들 수는 없습니다.</b> 남는 방법은 나누는 것뿐입니다.</p>
     </div>
-  </div>
-</section>
-
-<section id="flow" class="band-sm rule">
-  <div class="inner">
-    <span class="eyebrow" data-reveal>전기의 흐름 / THE FLOW</span>
-    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">햇빛에서 옆 세대까지, 한 줄로 이어집니다</h2>
-    <p class="lede" data-reveal style="margin-bottom:clamp(30px,3.6vw,48px);max-width:46ch">내가 만든 전기는 먼저 내가 쓰고, 남는 만큼만 이웃에게 흐릅니다. 세 번째 칸은 아직 제도가 막혀 있어서 그림으로만 그려둡니다.</p>
-    <div class="flow-scroll" data-reveal>
-      <svg viewBox="0 0 900 212" role="img" aria-label="햇빛이 태양광 모듈로 들어오고, 남은 전기가 이웃에게 흐르는 그림">
-        <g class="flow-dash" stroke="#ffd12e" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="10 22">
-          <path d="M100 74L232 98" />
-          <path d="M468 112h146" />
-        </g>
-        <circle cx="72" cy="58" r="24" fill="#ffd12e" />
-        <g stroke="#ffd12e" stroke-width="3" stroke-linecap="round" fill="none">
-          <path d="M72 16v10M72 90v10M30 58h10M104 58h10M43 29l7 7M94 80l7 7M101 29l-7 7M50 80l-7 7" />
-        </g>
-        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
-          <rect x="240" y="44" width="220" height="132" fill="#ffffff" />
-          <rect x="252" y="50" width="196" height="28" fill="#c9d6d8" stroke-width="1.5" />
-          <rect x="252" y="116" width="196" height="28" fill="#c9d6d8" stroke-width="1.5" />
-          <rect x="254" y="80" width="192" height="24" fill="#f2f0e9" stroke-width="2" />
-          <rect x="254" y="146" width="192" height="24" fill="#f0efe8" stroke-width="2" />
-          <g stroke="#a9aca6" stroke-width="1.5">
-            <path d="M286 82v20M318 82v20M350 82v20M382 82v20M414 82v20" />
-            <path d="M286 148v20M318 148v20M350 148v20M382 148v20M414 148v20" />
-          </g>
-          <path d="M240 106h220M240 172h220" stroke-width="3" />
-          <rect x="292" y="88" width="116" height="16" fill="#18293a" stroke="#18293a" />
-          <path d="M292 88h116" stroke="#ffd12e" stroke-width="3" />
-          <path d="M310 104v9M390 104v9" stroke-width="2.5" />
-        </g>
-        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
-          <rect x="620" y="44" width="220" height="132" fill="#ffffff" />
-          <rect x="632" y="50" width="196" height="28" fill="#e6e4dc" stroke-width="1.5" />
-          <rect x="632" y="116" width="196" height="28" fill="#e6e4dc" stroke-width="1.5" />
-          <rect x="634" y="80" width="192" height="24" fill="#f0efe8" stroke-width="2" />
-          <rect x="634" y="146" width="192" height="24" fill="#f0efe8" stroke-width="2" />
-          <g stroke="#a9aca6" stroke-width="1.5">
-            <path d="M666 82v20M698 82v20M730 82v20M762 82v20M794 82v20" />
-            <path d="M666 148v20M698 148v20M730 148v20M762 148v20M794 148v20" />
-          </g>
-          <path d="M620 106h220M620 172h220" stroke-width="3" />
-        </g>
-        <g font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="15" fill="#43484d">
-          <text x="72" y="200" text-anchor="middle">햇빛</text>
-          <text x="350" y="200" text-anchor="middle" fill="#101418" font-weight="600">내가 먼저 쓰고</text>
-          <text x="730" y="200" text-anchor="middle">남으면 같은 동 이웃 세대로 (아직 못 함)</text>
-        </g>
-      </svg>
+    <div class="stage-row" data-reveal>
+      <span class="when">그래서</span>
+      <p><b>그 압력이 결국 개인 쪽으로 옵니다.</b> 사용량이 제한되거나, 요금이 오르거나, 둘 다일 수 있습니다.</p>
     </div>
   </div>
 </section>
 
 <section class="band-sm rule tint">
   <div class="inner">
-    <div class="try">
-      <div>
-        <span class="eyebrow" data-reveal>직접 해보기 / TRY IT</span>
-        <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:20ch">유리 한 겹이 얼마나 손해인지 만져보세요</h2>
-        <p class="note" data-reveal style="margin-bottom:18px">※ 베란다 방향으로 만들던 때의 도구입니다. 방향은 바뀌었지만 지우지 않고 둡니다.</p>
-        <p data-reveal>베란다 방향으로 갈 때는 시작점이 지붕이 아니라 베란다였습니다. 거기서 갈림길이 하나 있었습니다. 모듈을 난간 바깥에 걸 것인가, 창문 안쪽에 놓을 것인가.</p>
-        <p data-reveal>난간 바깥은 잘 나오지만 관리규약과 낙하 문제를 넘어야 합니다. 창문 안쪽은 설치가 쉬운 대신 유리 한 겹을 더 통과합니다. 그 차이가 몇 와트인지는 말로 하면 안 와닿습니다. 그래서 직접 눌러보게 만들었습니다.</p>
-        <p data-reveal><b>난간 바깥에 걸기</b>와 <b>창문 안쪽에 놓기</b>를 번갈아 눌러보세요. 유리 종류를 바꾸면 손해가 얼마나 커지는지 바로 나옵니다. ＋ 로 모듈을 늘리고, 시간 슬라이더로 해를 옮기고, 드래그로 시점을 돌릴 수 있습니다.</p>
-        <p class="caveat" data-reveal>저희 집은 창문 안쪽으로 정했습니다. 그래서 이 도구에서 나오는 낮은 쪽 숫자가 제가 실제로 마주할 값입니다. 다만 이건 계산이지 측정이 아닙니다. 설비를 세우고 나면 실제로 잰 값으로 이 자리를 다시 채우겠습니다.</p>
-      </div>
-      <div class="viewer-wrap" data-reveal>
-        <balcony-viewer style="width:100%"></balcony-viewer>
-      </div>
+    <h2 class="h2" data-reveal style="margin-bottom:10px;max-width:16ch">그러니 역할을 나눕시다</h2>
+  </div>
+</section>
+<div class="rule">
+  <div class="three" data-reveal-group style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div data-tilt>
+      <span class="num">국가 산업의 전력</span>
+      <h3>지금처럼 큰 곳이 맡습니다</h3>
+      <p>인공지능, 데이터센터, 로봇, 반도체, 의료. 개인이 할 수 있는 일이 아닙니다. 여기는 국가가 크게 지어야 하는 자리입니다.</p>
     </div>
+    <div data-tilt>
+      <span class="num">개인이 쓰는 전기</span>
+      <h3>개인이 스스로 책임집니다</h3>
+      <p>자기가 쓰는 만큼을 만들고, 쉽게 쓰고, 남거나 모자라면 이웃과 사고팝니다. 여기는 개인이 작게 나눠 가지는 자리입니다.</p>
+    </div>
+  </div>
+</div>
+<section class="band-sm rule">
+  <div class="inner">
+    <p class="lede" data-reveal style="max-width:52ch">그러면 국가는 산업에 쓸 전기를 확보하고, <b>개인은 통제받지 않는 자기 몫을 갖습니다.</b> 그리고 전기를 만드는 곳이 수천 수만 곳으로 흩어지면, 한 곳이 무너져도 전부가 무너지지 않습니다.</p>
   </div>
 </section>
 
-<figure class="photo">
-  <div class="photo-pair">
-    <div class="shot">
-      <img src="img/roof.jpg" alt="단독주택 지붕 전체에 태양광 모듈이 깔려 있는 모습" loading="lazy" width="1400" height="933">
-      <p class="cap"><b>지붕이 있는 집</b>은 이렇게 답니다. 넓고, 눕힐 수 있고, 각도를 맞출 수 있습니다.</p>
+<section class="dark band">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>가능해진 이유 / WHY NOW POSSIBLE</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:22ch">쪼개도 손해가 없는 것은 태양광뿐입니다</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(34px,4vw,48px);max-width:48ch">이 말이 구호가 아니라 물리적으로 가능한 이야기가 된 이유가 여기 하나에 있습니다.</p>
+    <div class="steps" data-reveal-group style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <div data-tilt>
+        <span class="num">지금까지</span>
+        <h4>무언가를 돌려서 만들었습니다</h4>
+        <p>물로 돌리고, 증기로 돌리고, 바람으로 돌리고. 석탄도 원자력도 결국 물을 끓여 터빈을 돌립니다. 이런 발전소는 클수록 유리해서 쪼개면 손해입니다. 그래서 전기는 늘 큰 집단의 것이었습니다.</p>
+      </div>
+      <div data-tilt>
+        <span class="num">태양광</span>
+        <h4>아무것도 돌리지 않습니다</h4>
+        <p>빛이 반도체에 닿으면 전자가 바로 밀려납니다. 움직이는 부품이 없고, 연료가 없고, 쪼개도 손해가 없습니다. 1제곱미터짜리 백 장과 백 제곱미터짜리 한 장이 똑같이 작동합니다.</p>
+      </div>
     </div>
-    <div class="shot">
-      <img src="img/balcony.jpg" alt="아파트 여러 세대의 베란다 난간 바깥에 태양광 모듈이 걸려 있는 모습" loading="lazy" width="1400" height="933">
-      <p class="cap"><b>아파트에 사는 사람</b>은 이렇게 답니다. 난간 하나에 한두 장. 눕힐 수 없어 세워야 합니다.</p>
-    </div>
+    <p class="note" style="margin-top:28px;color:var(--on-dark-2)">※ 그래서 백 분의 일로 나눠 백 명이 하나씩 가질 수 있습니다. 물레방아는 손바닥만 하게 만들면 아무것도 못 돌리지만, 패널은 손바닥만 해도 그대로 작동합니다.</p>
   </div>
-  <figcaption>둘 다 참고 사진입니다.</figcaption>
-</figure>
+</section>
+
+<section id="start" class="band rule tint">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>어디서 시작하나 / THE START</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:22ch">가려는 곳은 집입니다. 시작은 손입니다</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(34px,4vw,50px);max-width:50ch">개인이 자기 집에서 쓰는 전기를 스스로 만드는 것. 그게 끝까지 가려는 자리입니다. 다만 거기서 시작하지는 않습니다.</p>
+
+    <div class="row" data-reveal>
+      <h3>집부터 시작하면 안 되는 이유</h3>
+      <div class="body">
+        <p>2026년 8월, 서울시 제품화지원센터에서 전문가 상담을 받았습니다. 한국처럼 전기가 잘 들어오는 곳에서 가정용은 수요가 나오기 어렵다는 말을 들었고, 그 자리에서 들고 다니는 쪽을 권유받았습니다. 제 가설에 반대되는 답이라 그대로 받아 적었습니다.</p>
+        <p>그리고 집에 다는 일은 개인 혼자 넘기 어려운 것들이 붙어 있습니다. 관리규약, 설치 자격, 계통 연계, 보조금 공고. 물건을 만들기도 전에 절차부터 막힙니다.</p>
+      </div>
+    </div>
+    <div class="row" data-reveal>
+      <h3>그래서 손에 드는 것부터 만듭니다</h3>
+      <div class="body">
+        <p>허가가 필요 없고, 오늘 사서 오늘 쓸 수 있고, 안 되면 안 되는 대로 바로 알 수 있습니다. 제일 빨리 배울 수 있는 자리가 여기입니다.</p>
+        <p>지금은 패널과 배터리를 따로 사서 케이블로 이어야 합니다. 둘을 합친 물건이 세상에 하나 있었는데 내장 패널이 너무 작아 며칠을 받아야 다 찼고, 리뷰에 장식이라는 말이 나왔습니다. 지금은 품절입니다.</p>
+        <p><b>들고 다닐 때는 한 덩어리, 쓸 때는 쉽게 나뉘는 물건.</b> 그게 첫 물건입니다.</p>
+      </div>
+    </div>
+    <div class="row" data-reveal>
+      <h3>같은 기술이 집으로 이어집니다</h3>
+      <div class="body">
+        <p>손에 드는 것이든 집에 다는 것이든 안에 들어가는 것은 같습니다. 태양광 패널, 배터리, 그리고 그 사이에서 전기를 옮기는 회로. 작게 되면 크게도 됩니다.</p>
+        <p>작은 것으로 구조를 증명하고, 그다음에 집으로 넓힙니다. <b>가려는 곳은 바뀌지 않았습니다. 맨 위에 적어둔 세 문장 그대로입니다.</b></p>
+      </div>
+    </div>  </div>
+</section>
+
+<section id="flow" class="band-sm rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>우리가 만들려는 흐름 / THE FLOW</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">햇빛에서 손에 든 기기까지, 네 칸입니다</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(30px,3.6vw,48px);max-width:48ch">펼치면 패널과 배터리로 나뉘고, 접으면 한 덩어리가 됩니다. 마지막 칸인 이웃과 사고파는 일은 아직 제도가 막혀 있어서 흐리게만 그려둡니다.</p>
+    <div class="flow-scroll" data-reveal>
+      <svg viewBox="0 0 900 212" role="img" aria-label="햇빛이 펼친 태양광 패널로 들어와 배터리에 담기고, 그 전기로 기기를 쓰고, 남으면 이웃에게 흐르는 그림">
+
+        <g class="flow-dash" stroke="#ffd12e" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="10 22">
+          <path d="M84 76L172 104" />
+          <path d="M352 120h72" />
+          <path d="M556 120h64" />
+        </g>
+        <g stroke="#c9c6bb" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="8 16">
+          <path d="M786 120h74" />
+        </g>
+
+        <circle cx="54" cy="58" r="22" fill="#ffd12e" />
+        <g stroke="#ffd12e" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M54 18v10M54 88v10M14 58h10M84 58h10M26 30l7 7M75 80l7 7M82 30l-7 7M33 80l-7 7" />
+        </g>
+
+        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round" fill="#18293a">
+          <path d="M186 148L214 66l44 0-18 82z" />
+          <path d="M244 148L262 66l44 0-8 82z" />
+          <path d="M302 148L310 66l40 0 2 82z" />
+        </g>
+        <g stroke="#4b6a86" stroke-width="1.4" fill="none">
+          <path d="M196 122h48M204 98h48M210 78h46" />
+          <path d="M252 122h48M258 98h48M264 78h44" />
+          <path d="M308 122h44M310 98h42M312 78h40" />
+        </g>
+        <g stroke="#101418" stroke-width="2.5" stroke-linecap="round">
+          <path d="M182 152h176" />
+          <path d="M270 152l-26 30M290 152l26 30" />
+        </g>
+
+        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
+          <rect x="428" y="74" width="126" height="86" rx="8" fill="#ffffff" />
+          <path d="M462 74v-9a10 10 0 0 1 10-10h38a10 10 0 0 1 10 10v9" fill="none" />
+          <rect x="444" y="90" width="60" height="30" rx="4" fill="#18293a" stroke="#18293a" />
+          <path d="M444 112h60" stroke="#ffd12e" stroke-width="4" />
+          <circle cx="528" cy="105" r="7" fill="#ffd12e" />
+          <path d="M446 138h26M486 138h26" stroke-width="3" />
+        </g>
+
+        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
+          <rect x="628" y="80" width="44" height="76" rx="7" fill="#ffffff" />
+          <path d="M640 92h20" stroke-width="3" />
+          <circle cx="726" cy="106" r="24" fill="#ffd12e" />
+          <path d="M726 82v-8M702 106h-9M750 106h9M709 89l-6-6M743 89l6-6" fill="none" stroke-width="2.5" stroke-linecap="round" />
+          <rect x="714" y="130" width="24" height="12" rx="3" fill="#ffffff" />
+        </g>
+
+        <g stroke="#c9c6bb" stroke-width="2.5" stroke-linejoin="round" fill="#ffffff">
+          <path d="M812 152v-52l30-24 30 24v52z" />
+          <path d="M832 152v-28h20v28" />
+        </g>
+
+        <g font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="15" fill="#43484d">
+          <text x="54" y="196" text-anchor="middle">햇빛</text>
+          <text x="268" y="196" text-anchor="middle" fill="#101418" font-weight="600">펼친 패널</text>
+          <text x="491" y="196" text-anchor="middle" fill="#101418" font-weight="600">배터리에 담고</text>
+          <text x="690" y="196" text-anchor="middle" fill="#101418" font-weight="600">내가 먼저 쓰고</text>
+          <text x="842" y="196" text-anchor="middle" fill="#8d8f8a">이웃에게<tspan x="842" dy="17">(아직 못 함)</tspan></text>
+        </g>
+      </svg>
+    </div>
+    <p class="note" style="margin-top:18px">※ 접으면 이 패널과 배터리가 한 덩어리가 됩니다. 들고 다닐 때는 하나, 쓸 때는 둘입니다.</p>
+  </div>
+</section>
 
 <!-- 작동 방식 자리를 실제로 할 일 네 단계로. 서비스 절차 아님 -->
 <section id="steps" class="dark band">
@@ -509,6 +576,25 @@
       <div>
         <h4>흐린 날과 밤에는요?</h4>
         <p>그때는 지금처럼 밖에서 받아 씁니다. 이건 완전한 독립이 아니라 시작입니다. 처음부터 그렇게 말해두는 편이 낫다고 생각합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="band rule tint">
+  <div class="inner">
+    <div class="try">
+      <div>
+        <span class="eyebrow" data-reveal>재미로 / JUST FOR FUN</span>
+        <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:22ch">유리 한 겹이 얼마나 손해인지 만져보세요</h2>
+        <p class="note" data-reveal style="margin-bottom:18px">※ 지금 만드는 물건과는 관계가 없습니다. 방향을 바꾸기 전에 만들어 둔 것이라 맨 아래에 그대로 둡니다.</p>
+        <p data-reveal>태양광을 아파트에 달려면 갈림길이 하나 나옵니다. 모듈을 난간 바깥에 걸 것인가, 창문 안쪽에 놓을 것인가. 난간 바깥은 잘 나오지만 관리규약과 낙하 문제를 넘어야 하고, 창문 안쪽은 설치가 쉬운 대신 유리 한 겹을 더 통과합니다.</p>
+        <p data-reveal>그 차이가 몇 와트인지는 말로 하면 안 와닿습니다. 그래서 눌러보게 만들었습니다.</p>
+        <p data-reveal><b>난간 바깥에 걸기</b>와 <b>창문 안쪽에 놓기</b>를 번갈아 눌러보세요. 유리 종류를 바꾸면 손해가 얼마나 커지는지 바로 나옵니다. ＋ 로 모듈을 늘리고, 시간 슬라이더로 해를 옮기고, 드래그로 시점을 돌릴 수 있습니다.</p>
+        <p class="caveat" data-reveal>여기 나오는 숫자는 계산이지 측정이 아닙니다. 실제로 재본 값이 아닙니다.</p>
+      </div>
+      <div class="viewer-wrap" data-reveal>
+        <balcony-viewer style="width:100%"></balcony-viewer>
       </div>
     </div>
   </div>
