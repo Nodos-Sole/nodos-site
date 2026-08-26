@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전기를 내 손으로</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf9f4;
+    --bg-soft:#f5f3ee;
+    --bg-card:#f0eee9;
+    --ink:#1b1c19;
+    --ink-soft:#464742;
+    --muted:#625e55;
+    --muted-faint:#767871;
+    --border:#e9e1d6;
+    --border-soft:#c6c7c0;
+    --warn:#93551c;
+    --good:#2d5a3f;
+
+    --font-display:'EB Garamond', Georgia, serif;
+    --font-kr:'Noto Serif KR', Georgia, serif;
+    --font-sans:'Manrope', system-ui, -apple-system, sans-serif;
+
+    --w:760px;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-kr);
+    font-size:17px;
+    line-height:1.85;
+    font-weight:400;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+
+  .wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+
+  /* 상단 도구 막대. 초안 표시를 켜고 끄는 자리 */
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(251,249,244,.88);
+    backdrop-filter:saturate(150%) blur(6px);
+    border-bottom:1px solid var(--border);
+  }
+  .toolbar .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:52px;
+  }
+  .mark{
+    font-family:var(--font-sans);
+    font-size:12px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted-faint);
+  }
+  .toggle{
+    font-family:var(--font-sans);
+    font-size:12px;font-weight:600;
+    letter-spacing:.04em;
+    color:var(--muted);
+    background:none;
+    border:1px solid var(--border-soft);
+    border-radius:2px;
+    padding:6px 12px;
+    cursor:pointer;
+  }
+  .toggle:hover{color:var(--ink);border-color:var(--ink)}
+
+  /* 첫 화면 */
+  header.hero{padding:120px 0 96px}
+  h1{
+    font-family:var(--font-kr);
+    font-weight:500;
+    font-size:clamp(34px,6.4vw,60px);
+    line-height:1.38;
+    letter-spacing:-.02em;
+    margin:0 0 32px;
+  }
+  .sub{
+    font-size:19px;
+    line-height:1.8;
+    color:var(--ink-soft);
+    max-width:34em;
+    margin:0;
+  }
+
+  /* 섹션 공통 */
+  section{padding:72px 0;border-top:1px solid var(--border)}
+  .label{
+    font-family:var(--font-sans);
+    font-size:12px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted-faint);
+    margin:0 0 24px;
+  }
+  h2{
+    font-family:var(--font-kr);
+    font-weight:500;
+    font-size:clamp(24px,3.6vw,32px);
+    line-height:1.5;
+    letter-spacing:-.01em;
+    margin:0 0 28px;
+  }
+  p{margin:0 0 22px}
+  p:last-child{margin-bottom:0}
+
+  /* 기록 목록. 글이 쌓이면 li 가 채워지는 자리 */
+  ul.notes{list-style:none;margin:0;padding:0}
+  ul.notes li{
+    padding:22px 0;
+    border-bottom:1px solid var(--border);
+  }
+  ul.notes li:first-child{border-top:1px solid var(--border)}
+  ul.notes a{
+    color:var(--ink);
+    text-decoration:none;
+    font-size:19px;
+    line-height:1.6;
+  }
+  ul.notes a:hover{text-decoration:underline;text-underline-offset:4px}
+  ul.notes .date{
+    display:block;
+    font-family:var(--font-sans);
+    font-size:12px;font-weight:500;
+    letter-spacing:.08em;
+    color:var(--muted-faint);
+    margin-top:6px;
+  }
+  .empty{
+    background:var(--bg-soft);
+    border:1px solid var(--border);
+    padding:32px 28px;
+    color:var(--muted);
+    font-size:16px;
+  }
+
+  /* 따라오기. 구독 자리는 지금 비워둠 */
+  .follow-slot{
+    border:1px dashed var(--border-soft);
+    padding:28px;
+    color:var(--muted-faint);
+    font-family:var(--font-sans);
+    font-size:13px;
+    line-height:1.7;
+  }
+
+  footer{
+    padding:64px 0 96px;
+    border-top:1px solid var(--border);
+    font-family:var(--font-sans);
+    font-size:12px;
+    letter-spacing:.06em;
+    color:var(--muted-faint);
+  }
+
+  /* 아직 확정하지 않은 카피 표시.
+     사용자가 문장을 고르고 고치면 draft 클래스를 떼면 됨 */
+  .draft{
+    position:relative;
+    background:#faf3e8;
+    box-shadow:-14px 0 0 #faf3e8, 14px 0 0 #faf3e8;
+  }
+  .draft::after{
+    content:"초안";
+    font-family:var(--font-sans);
+    font-size:10px;font-weight:600;
+    letter-spacing:.12em;
+    color:var(--warn);
+    vertical-align:super;
+    margin-left:6px;
+    white-space:nowrap;
+  }
+  body.clean .draft{background:none;box-shadow:none}
+  body.clean .draft::after{content:none}
+
+  @media (max-width:520px){
+    body{font-size:16px}
+    header.hero{padding:72px 0 60px}
+    section{padding:56px 0}
+    .sub{font-size:17px}
+    .draft{box-shadow:-8px 0 0 #faf3e8, 8px 0 0 #faf3e8}
+  }
+
+  @media print{
+    .toolbar{display:none}
+    .draft{background:none;box-shadow:none}
+    .draft::after{content:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="mark">기록의 시작</span>
+    <button class="toggle" id="toggle">초안 표시 끄기</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ================= 첫 화면 =================
+       카피 후보 (사용자가 고를 자리)
+       1안  내 전기를 내 손으로 만들어 보려고 합니다.
+       2안  전기를 스스로 만드는 일을, 평범한 사람이 해봅니다.
+       3안  베란다에서 전기를 만들어 봅니다.
+
+       부제 후보
+       1안  밖에서 오는 전기 말고, 내가 만든 전기로 어디까지 되는지 직접 해보고 전부 적습니다.
+       2안  남향 베란다 하나로 어디까지 되는지, 해보면서 배운 것을 그대로 남깁니다.
+       3안  전기를 만드는 일을 처음부터 배우고, 배운 만큼 여기에 적습니다.
+  ============================================== -->
+  <header class="hero">
+    <h1><span class="draft">내 전기를 내 손으로 만들어 보려고 합니다.</span></h1>
+    <p class="sub"><span class="draft">밖에서 오는 전기 말고, 내가 만든 전기로 어디까지 되는지 직접 해보고 전부 적습니다.</span></p>
+  </header>
+
+  <!-- ================= 왜 이 자리인가 =================
+       카피 후보
+       1안 (아래 적용)  맡김과 정함의 관계로 푼 결. 두려움 없이 사실만
+       2안  앞으로 전기는 개인에게도 안보에 가까워집니다. 그래서 만드는 쪽에 한 발을 걸쳐 두려고 합니다.
+            (주의: 안보라는 단어가 두려움 결로 기울 수 있음. 사용자 판단 필요)
+       3안  만드는 쪽에 서 보고 싶었습니다. 쓰기만 하던 자리에서 한 발 옮기는 일입니다.
+  ==================================================== -->
+  <section>
+    <p class="label">왜 이 자리를</p>
+    <h2><span class="draft">쓰기만 하던 자리에서 한 발 옮겨 봅니다.</span></h2>
+    <p><span class="draft">전기를 만드는 일을 전부 남에게 맡기면, 쓰는 방식도 남이 정하게 됩니다. 크지 않아도 좋으니 만드는 힘을 내 쪽에 조금 두려고 합니다.</span></p>
+    <p><span class="draft">거창한 기술 이야기가 아닙니다. 자기 삶을 자기 손에 두는 일에 가깝습니다.</span></p>
+  </section>
+
+  <!-- ================= 기록 =================
+       사용자가 하는 전기 공부 글이 쌓이는 자리.
+       글이 생기면 아래 ul.notes 안에 li 를 추가하면 됨. 형식은 주석의 예시 참고.
+
+       <li>
+         <a href="notes/0001.html">글 제목이 들어갑니다</a>
+         <span class="date">2026.09.01</span>
+       </li>
+
+       카피 후보
+       1안 (아래 적용)  여기에 전기 공부한 것을 적습니다. 배운 것, 틀린 것, 다시 안 것을 그대로 남깁니다.
+       2안  전기를 하나도 모르는 자리에서 시작합니다. 공부한 만큼 여기에 쌓입니다.
+       3안  읽은 것과 해본 것을 정리해 둡니다.
+  ========================================== -->
+  <section>
+    <p class="label">기록</p>
+    <h2><span class="draft">공부한 것을 여기에 쌓습니다.</span></h2>
+    <p><span class="draft">전기를 하나도 모르는 자리에서 시작합니다. 배운 것, 틀린 것, 다시 안 것을 그대로 남깁니다.</span></p>
+
+    <ul class="notes">
+      <!-- 글이 쌓이는 자리. 지금은 비어 있음 -->
+    </ul>
+
+    <div class="empty"><span class="draft">첫 글을 준비하고 있습니다.</span></div>
+  </section>
+
+  <!-- ================= 따라오기 =================
+       구독 폼은 이번 판에서 만들지 않음. 자리만 잡아 둠.
+       나중에 폼을 넣을 때 아래 .follow-slot 을 통째로 교체하면 됨.
+
+       카피 후보
+       1안 (아래 적용)  글이 올라오면 이 자리에서 이어집니다.
+       2안  천천히 갑니다. 급하게 만들 생각은 없습니다.
+       3안  다음 글에서 뵙겠습니다.
+  ============================================== -->
+  <section>
+    <p class="label">따라오기</p>
+    <p><span class="draft">글이 올라오면 이 자리에서 이어집니다.</span></p>
+    <div class="follow-slot">구독 자리 (지금은 비워 둠). 이메일 수집은 이번 판에서 만들지 않았습니다. 나중에 이 상자를 폼으로 바꾸면 됩니다.</div>
+  </section>
+
+  <footer>2026</footer>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    btn.addEventListener('click', function () {
+      var clean = document.body.classList.toggle('clean');
+      btn.textContent = clean ? '초안 표시 켜기' : '초안 표시 끄기';
+    });
+  })();
+</script>
+
+</body>
+</html>

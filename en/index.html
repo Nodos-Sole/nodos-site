@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NODOS</title>
+<meta name="description" content="Everyone should be able to make their own electricity easily, use it easily, and trade it easily. One ordinary person in Seoul, starting from a single balcony, publishing everything including what does not work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<script src="../balcony-viewer.js"></script>
+<style>
+  :root{
+    --bg:#fbfbf8; --ink:#101418; --ink-2:#43484d; --ink-3:#5b6065; --ink-4:#6b706d;
+    --line:#e4e5df; --line-2:#cfd1cb; --gold:#86610a;
+    --yellow:#ffd12e; --yellow-soft:#ffd94a;
+    --dark:#101418; --on-dark:#fbfbf8; --on-dark-2:#a2a6a1; --tint:#f4f3ee;
+    --display:'Caprasimo','Jua',system-ui,sans-serif;
+    --sans:'Figtree','Noto Sans KR',system-ui,-apple-system,sans-serif;
+    --pad:clamp(20px,4vw,48px); --w:1280px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:400;letter-spacing:-.015em;margin:0}
+  p{margin:0}
+  a{color:var(--ink);text-decoration:none}
+  a:hover{color:var(--gold)}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  ::selection{background:var(--yellow-soft)}
+
+  @keyframes flowdash{to{stroke-dashoffset:-32}}
+  @keyframes sunpulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.8;transform:scale(1.06)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+  .inner{max-width:var(--w);margin:0 auto;padding:0 var(--pad)}
+  .band{padding:clamp(52px,6vw,92px) 0}
+  .band-sm{padding:clamp(48px,6vw,84px) 0}
+  .rule{border-bottom:1px solid var(--line)}
+  .tint{background:var(--tint)}
+  .eyebrow{display:block;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+  .h2{font-size:clamp(24px,2.5vw,36px);line-height:1.35}
+  .lede{font-size:15.5px;line-height:1.8;color:var(--ink-3)}
+  .hl{background:linear-gradient(to bottom,transparent 62%,var(--yellow-soft) 62%)}
+  .note{margin-top:18px;font-size:11.5px;line-height:1.7;color:var(--ink-4)}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(251,251,248,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .inner{min-height:64px;padding-block:10px;display:flex;align-items:center;flex-wrap:wrap;row-gap:8px;column-gap:clamp(14px,2.4vw,30px)}
+  .logo{display:flex;align-items:center;gap:9px;margin-right:auto;font-family:var(--display);font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+  .dot{width:11px;height:11px;background:var(--yellow);border-radius:2px}
+  .latin{font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;color:var(--ink-4)}
+  nav a{font-size:14px;color:var(--ink-2);white-space:nowrap}
+  .lang{font-weight:600;padding:6px 12px;border:1px solid var(--line-2);border-radius:4px;font-size:12.5px;letter-spacing:.04em}
+  .lang:hover{border-color:var(--ink)}
+
+  /* 비전 첫 화면. 이 페이지에서는 비전이 화면 전체를 차지한다 */
+  .creed{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .glow{position:absolute;pointer-events:none}
+  .glow-sun{right:-160px;top:-200px;width:620px;height:620px}
+  .glow-sun>div{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 50% 50%,#ffe58a 0%,rgba(255,229,138,0) 68%);animation:sunpulse 9s ease-in-out infinite}
+  .glow-green{left:-200px;bottom:-260px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(180,205,190,.5) 0%,rgba(180,205,190,0) 70%)}
+  .creed .inner{position:relative;padding-top:clamp(64px,10vw,140px);padding-bottom:clamp(56px,8vw,116px)}
+  .creed h1{font-size:clamp(30px,4.6vw,62px);line-height:1.3;max-width:19ch}
+  .creed h1 span.l{display:block;margin-bottom:.28em}
+  .creed h1 span.l:last-child{margin-bottom:0}
+  .creed .sig{margin-top:clamp(32px,4vw,52px);padding-top:24px;border-top:1px solid var(--line-2);font-size:15px;line-height:1.85;color:var(--ink-2);max-width:46ch}
+
+  /* 지금 서 있는 자리 */
+  .stand .inner{padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:start}
+  .stand p{font-size:16px;line-height:1.85;color:var(--ink-2);margin-bottom:18px;max-width:44ch}
+  .stand p:last-child{margin-bottom:0}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+  .btn{font-size:15px;font-weight:600;padding:13px 22px;border-radius:4px;white-space:nowrap;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+  .btn-dark{background:var(--ink);color:var(--bg)}
+  .btn-dark:hover{color:var(--bg);transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,20,24,.22)}
+  .btn-line{padding:13px 20px;border:1px solid var(--line-2)}
+  .btn-line:hover{transform:translateY(-2px);border-color:var(--ink);background:var(--yellow-soft);color:var(--ink)}
+  .btn-yellow{background:var(--yellow);color:var(--ink)}
+  .btn-yellow:hover{color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,209,46,.45)}
+
+  .three{max-width:var(--w);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .three>div{padding:clamp(28px,3.4vw,44px) var(--pad);border-right:1px solid var(--line);transition:background .3s}
+  .three>div:last-child{border-right:0}
+  .three .num{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--gold)}
+  .three h3{font-size:21px;line-height:1.45;margin:14px 0 10px}
+  .three p{font-size:14.5px;line-height:1.8;color:var(--ink-3)}
+
+  .flow-scroll{overflow-x:auto;padding-bottom:6px}
+  .flow-scroll svg{display:block;width:100%;min-width:620px;height:auto}
+  .flow-dash{animation:flowdash 1.6s linear infinite}
+
+  .try{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:start}
+  .try p{margin-bottom:16px;font-size:15.5px;line-height:1.8;max-width:42ch;color:var(--ink-3)}
+  .try p:last-child{margin-bottom:0}
+  .viewer-wrap{min-height:440px}
+  .caveat{margin-top:16px;padding:14px 16px;border-left:3px solid var(--yellow);background:#fbfbf8;font-size:13.5px;line-height:1.75;color:var(--ink-2)}
+
+  .photo{margin:0;border-bottom:1px solid var(--line);background:var(--tint);padding:clamp(40px,5vw,68px) 0}
+  .photo-pair{max-width:var(--w);margin:0 auto;padding:0 var(--pad);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,34px)}
+  .shot img{display:block;width:100%;height:auto;border-radius:4px;border:1px solid var(--line)}
+  .shot .cap{margin-top:14px;font-size:14.5px;line-height:1.75;color:var(--ink-3)}
+  .shot .cap b{color:var(--ink);font-weight:600}
+  .photo figcaption{max-width:var(--w);margin:clamp(24px,3vw,34px) auto 0;padding:0 var(--pad);font-size:13px;line-height:1.8;color:var(--ink-4)}
+
+  .row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px clamp(24px,4vw,64px);padding:clamp(22px,2.6vw,34px) 0;border-top:1px solid var(--line)}
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .row h3{font-size:clamp(19px,1.7vw,24px);line-height:1.45}
+  .row p{font-size:15px;line-height:1.85;color:var(--ink-3);max-width:52ch}
+
+  .dark{background:var(--dark);color:#f4f4f0}
+  .dark .eyebrow{color:var(--yellow)}
+  .dark h2{color:var(--on-dark)}
+  .dark .lede{color:var(--on-dark-2)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:clamp(28px,3vw,40px)}
+  .steps>div{border-top:2px solid var(--yellow);padding-top:20px;transition:transform .3s}
+  .steps .num{font-family:var(--display);font-size:15px;color:var(--yellow)}
+  .steps h4{font-size:19px;line-height:1.45;margin:12px 0 10px;color:var(--on-dark)}
+  .steps p{font-size:14.5px;line-height:1.8;color:var(--on-dark-2)}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .stats>div{background:var(--bg);padding:clamp(24px,3vw,36px);transition:background .3s}
+  .stats p{font-size:13.5px;line-height:1.7;color:var(--ink-3)}
+  .stats p.stat{font-family:var(--display);font-size:clamp(34px,3.6vw,46px);line-height:1.15;margin-bottom:12px;letter-spacing:-.02em;color:var(--ink)}
+  .stats p.stat .unit{font-size:.4em;letter-spacing:0}
+  blockquote{margin:clamp(40px,5vw,64px) 0 0;padding-left:clamp(18px,2vw,26px);border-left:3px solid var(--yellow);font-family:var(--display);font-size:clamp(19px,1.9vw,26px);line-height:1.6;letter-spacing:-.015em;max-width:36ch}
+  blockquote .who{display:block;margin-top:18px;font-family:var(--sans);font-size:12.5px;letter-spacing:.02em;color:var(--ink-4)}
+
+  .stage-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px clamp(24px,4vw,56px);padding:22px 0;border-top:1px solid var(--line)}
+  .stage-row:last-of-type{border-bottom:1px solid var(--line)}
+  .stage-row .when{font-family:var(--display);font-size:17px;white-space:nowrap;color:var(--gold)}
+  .stage-row p{font-size:15px;line-height:1.8;max-width:56ch}
+
+  .qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,3.4vw,44px) clamp(32px,5vw,72px)}
+  .qa h4{font-size:18px;line-height:1.5;margin-bottom:10px}
+  .qa p{font-size:14.5px;line-height:1.85;color:var(--ink-3)}
+
+  .contact .inner{padding-top:clamp(52px,6vw,92px);padding-bottom:clamp(44px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,5vw,72px)}
+  .contact h2{margin-bottom:16px;max-width:22ch}
+  .contact .lede{max-width:44ch}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:26px 32px;align-content:start}
+  .meta .k{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:10px}
+  .meta p{font-size:14.5px;line-height:1.8;color:var(--ink-2)}
+
+  footer{border-top:1px solid var(--line)}
+  footer .inner{padding-top:26px;padding-bottom:40px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;font-size:13px;color:var(--ink-4)}
+  footer .logo{font-size:17px;color:var(--ink)}
+  footer .stamp{font-size:11.5px}
+
+  @media (max-width:720px){.row{grid-template-columns:1fr}.stage-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <span class="logo"><span class="dot"></span>NODOS<span class="latin">ELECTRICITY</span></span>
+    <a href="#why">Why now</a>
+    <a href="#flow">The flow</a>
+    <a href="#doing">What I'm doing</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#faq">Questions</a>
+    <a href="../index.html" class="lang">한국어</a>
+  </div>
+</nav>
+
+<!-- 비전. 이 페이지에서는 첫 화면을 통째로 쓴다 -->
+<section class="creed">
+  <div class="glow glow-sun" data-parallax="0.14"><div></div></div>
+  <div class="glow glow-green" data-parallax="-0.07"></div>
+  <div class="inner">
+    <span class="eyebrow" data-hero="0">What we believe</span>
+    <h1>
+      <span class="l" data-hero="1">Everyone should be able to <span class="hl">make</span> their own electricity easily.</span>
+      <span class="l" data-hero="2">To <span class="hl">use</span> what they made, easily.</span>
+      <span class="l" data-hero="3">And to <span class="hl">buy and sell</span> it, easily.</span>
+    </h1>
+    <p class="sig" data-hero="4">Electricity is becoming a matter of security, and not only for countries. Bring that logic down to one person and the answer changes. Someone who cannot make their own electricity ends up living the way somebody else decides.</p>
+  </div>
+</section>
+
+<!-- 지금 서 있는 자리 -->
+<section class="stand rule">
+  <div class="inner">
+    <div>
+      <p>That is a large sentence, so here is the small one underneath it.</p>
+      <p><strong>I am one person in Seoul with a south facing balcony.</strong> No company, no team, no product, no funding. I studied accounting, not engineering.</p>
+      <p>I am starting with the smallest version of the idea that I can actually touch, learning the physics from zero, and publishing all of it. Including the parts that do not work.</p>
+    </div>
+    <div>
+      <p>Korea is a strange place to try this. The balcony solar programme collapsed in 2021. 68 companies took government subsidies, 14 of them shut down within three years, 11 within a single year. A national audit found companies that took the money and installed nothing at all. Seoul cancelled its subsidy in 2022 and has not brought it back.</p>
+      <p><strong>So the gap here is not technology or price. It is that nobody believes anyone.</strong> My bet is that one ordinary person showing the whole thing in public is worth more in that market than another company with a good looking website.</p>
+      <div class="btns">
+        <a href="#try" class="btn btn-dark">Try the 3D tool</a>
+        <a href="#numbers" class="btn btn-line">See the numbers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 세 자리 -->
+<div class="rule">
+  <div class="three" data-reveal-group>
+    <div data-tilt>
+      <span class="num">01 / MAKE</span>
+      <h3>Make it yourself</h3>
+      <p>First question: does it even work without a roof. One south facing balcony, measured and calculated before anything gets bought.</p>
+    </div>
+    <div data-tilt>
+      <span class="num">02 / USE</span>
+      <h3>Use it yourself</h3>
+      <p>Find out what actually runs on it. A phone, a laptop, a small light. Start there and count.</p>
+    </div>
+    <div data-tilt>
+      <span class="num">03 / TRADE</span>
+      <h3>Pass on what is left</h3>
+      <p>Selling power directly to a neighbour is currently blocked by regulation in Korea. I treat this as a five year problem and keep notes until it opens.</p>
+    </div>
+  </div>
+</div>
+
+<section id="flow" class="band-sm rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>The flow</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:26ch">From sunlight to the flat next door</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(30px,3.6vw,48px);max-width:48ch">Power made on a balcony is used in that home first. Only the surplus moves on. The third step is drawn here but is not legal yet.</p>
+    <div class="flow-scroll" data-reveal>
+      <svg viewBox="0 0 900 212" role="img" aria-label="Sunlight reaches a solar module on an apartment balcony, the household uses it first, and any surplus flows to a neighbouring flat">
+        <g class="flow-dash" stroke="#ffd12e" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="10 22">
+          <path d="M100 74L232 98" /><path d="M468 112h146" />
+        </g>
+        <circle cx="72" cy="58" r="24" fill="#ffd12e" />
+        <g stroke="#ffd12e" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M72 16v10M72 90v10M30 58h10M104 58h10M43 29l7 7M94 80l7 7M101 29l-7 7M50 80l-7 7" />
+        </g>
+        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
+          <rect x="240" y="44" width="220" height="132" fill="#ffffff" />
+          <rect x="252" y="50" width="196" height="28" fill="#c9d6d8" stroke-width="1.5" />
+          <rect x="252" y="116" width="196" height="28" fill="#c9d6d8" stroke-width="1.5" />
+          <rect x="254" y="80" width="192" height="24" fill="#f2f0e9" stroke-width="2" />
+          <rect x="254" y="146" width="192" height="24" fill="#f0efe8" stroke-width="2" />
+          <g stroke="#a9aca6" stroke-width="1.5">
+            <path d="M286 82v20M318 82v20M350 82v20M382 82v20M414 82v20" />
+            <path d="M286 148v20M318 148v20M350 148v20M382 148v20M414 148v20" />
+          </g>
+          <path d="M240 106h220M240 172h220" stroke-width="3" />
+          <rect x="292" y="88" width="116" height="16" fill="#18293a" stroke="#18293a" />
+          <path d="M292 88h116" stroke="#ffd12e" stroke-width="3" />
+          <path d="M310 104v9M390 104v9" stroke-width="2.5" />
+        </g>
+        <g stroke="#101418" stroke-width="2.5" stroke-linejoin="round">
+          <rect x="620" y="44" width="220" height="132" fill="#ffffff" />
+          <rect x="632" y="50" width="196" height="28" fill="#e6e4dc" stroke-width="1.5" />
+          <rect x="632" y="116" width="196" height="28" fill="#e6e4dc" stroke-width="1.5" />
+          <rect x="634" y="80" width="192" height="24" fill="#f0efe8" stroke-width="2" />
+          <rect x="634" y="146" width="192" height="24" fill="#f0efe8" stroke-width="2" />
+          <g stroke="#a9aca6" stroke-width="1.5">
+            <path d="M666 82v20M698 82v20M730 82v20M762 82v20M794 82v20" />
+            <path d="M666 148v20M698 148v20M730 148v20M762 148v20M794 148v20" />
+          </g>
+          <path d="M620 106h220M620 172h220" stroke-width="3" />
+        </g>
+        <g font-family="Figtree, sans-serif" font-size="15" fill="#43484d">
+          <text x="72" y="200" text-anchor="middle">Sunlight</text>
+          <text x="350" y="200" text-anchor="middle" fill="#101418" font-weight="600">Our balcony, used here first</text>
+          <text x="730" y="200" text-anchor="middle">Surplus to a neighbour (not yet legal)</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="try" class="band-sm rule tint">
+  <div class="inner">
+    <div class="try">
+      <div>
+        <span class="eyebrow" data-reveal>Try it</span>
+        <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:22ch">Find out what one pane of glass costs you</h2>
+        <p data-reveal>Most people in Seoul live in apartments, so the starting point is not a roof. It is a balcony. And that creates a fork: do you hang the module outside the railing, or stand it inside the window?</p>
+        <p data-reveal>Outside performs better but you have to get past building rules and the risk of something falling twelve floors. Inside is easy to install but the light passes through one more pane of glass. Saying that costs you some watts means nothing. So here it is as something you can press.</p>
+        <p data-reveal>Switch between <b>outside the railing</b> and <b>inside the window</b>. Change the glass type and the loss appears immediately. Use ＋ for more modules, the slider to move the sun, and drag to rotate.</p>
+        <p class="caveat" data-reveal>I chose inside the window for my own flat, so the lower number is the one I will actually live with. This is a calculation, not a measurement. Once something is physically installed I will replace these numbers with measured ones.</p>
+      </div>
+      <div class="viewer-wrap" data-reveal>
+        <balcony-viewer lang="en" style="width:100%"></balcony-viewer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<figure class="photo">
+  <div class="photo-pair">
+    <div class="shot">
+      <img src="../img/roof.jpg" alt="A detached house with solar modules covering the whole roof" loading="lazy" width="1400" height="933">
+      <p class="cap"><b>With a roof</b> you get space, you can lay the panels flat, and you can set the angle.</p>
+    </div>
+    <div class="shot">
+      <img src="../img/balcony.jpg" alt="Solar modules hung on the outside of several apartment balcony railings" loading="lazy" width="1400" height="933">
+      <p class="cap"><b>In an apartment</b> you get one railing and one or two modules, standing upright because they cannot be laid flat.</p>
+    </div>
+  </div>
+  <figcaption>Both are reference photographs.</figcaption>
+</figure>
+
+<section id="why" class="band rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>Why now</span>
+    <h2 class="h2" data-reveal style="margin-bottom:clamp(36px,4vw,56px);max-width:26ch">The reasons to wait are disappearing one by one</h2>
+
+    <div class="row" data-reveal>
+      <h3>The machines are ready. What is left is paperwork</h3>
+      <p>Panels, inverters and meters are things an individual can now handle. What actually stops people is not knowing what to file, where, and in what order. That is the part I am walking into myself so I can write the sequence down.</p>
+    </div>
+
+    <div class="row" data-reveal>
+      <h3>The country reopened it. Seoul has not</h3>
+      <p>Seoul announced the end of its balcony solar subsidy in September 2021 and stopped it from 2022. It has never returned. In April 2026 a national programme for household balcony solar was added in a supplementary budget, aiming at 100,000 homes. Whether an individual in Seoul can apply to it is something I have not been able to confirm from the original notice yet. When I confirm it, it goes up here with the source.</p>
+    </div>
+
+    <div class="row" data-reveal>
+      <h3>Standing on the selling side changes what you see</h3>
+      <p>Someone who can make electricity stands somewhere different from someone who can only buy it. It is less an argument about bills than about who decides.</p>
+    </div>
+  </div>
+</section>
+
+<section id="doing" class="dark band">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>What I am doing</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:26ch">Four steps, starting from one balcony</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(36px,4vw,56px);max-width:48ch">In order, and written down whether it works or not.</p>
+    <div class="steps" data-reveal-group>
+      <div data-tilt>
+        <span class="num">01</span>
+        <h4>Measure the balcony</h4>
+        <p>South facing. Direct sun from 12:00 to 15:00. The panel goes inside the window. This part is confirmed.</p>
+      </div>
+      <div data-tilt>
+        <span class="num">02</span>
+        <h4>Calculate the output</h4>
+        <p>How many watt hours a day, and what one pane of glass takes away. No number goes up without a source.</p>
+      </div>
+      <div data-tilt>
+        <span class="num">03</span>
+        <h4>Build it</h4>
+        <p>Buy a power station and a panel and install them myself. There is no money yet, so there is no date.</p>
+      </div>
+      <div data-tilt>
+        <span class="num">04</span>
+        <h4>Write all of it down</h4>
+        <p>What worked, what did not, and what I got wrong. There are already enough records in this market that only mention the good parts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="numbers" class="band rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>The numbers</span>
+    <h2 class="h2" data-reveal style="margin-bottom:14px;max-width:24ch">No invented figures</h2>
+    <p class="lede" data-reveal style="margin-bottom:clamp(36px,4vw,52px);max-width:50ch">This space could have been filled with plausible case studies. Instead it holds only what is certain right now. The day the zero becomes a one is the first real event in this record.</p>
+
+    <div class="stats" data-reveal-group>
+      <div data-tilt>
+        <p class="stat"><span data-count="0.9" data-decimals="1">0.9</span><span class="unit"> kW</span></p>
+        <p>Rated capacity of three 300W modules. The maximum in the drawing above. A calculated figure</p>
+      </div>
+      <div data-tilt>
+        <p class="stat"><span data-count="3" data-decimals="0">3</span><span class="unit"> hours</span></p>
+        <p>Direct sun on this balcony, 12:00 to 15:00. Observed, not estimated</p>
+      </div>
+      <div data-tilt>
+        <p class="stat"><span data-count="0" data-decimals="0">0</span><span class="unit"> installed</span></p>
+        <p>Systems actually built so far. Nothing has been made yet</p>
+      </div>
+    </div>
+    <p class="note">These are real values, not placeholders. They get corrected the moment they change.</p>
+
+    <blockquote data-reveal>“You do not have to be a genius. If an ordinary person can do it with their own hands, then other ordinary people can too.”<span class="who">Why this record exists</span></blockquote>
+  </div>
+</section>
+
+<section id="plan" class="band rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>What comes next</span>
+    <h2 class="h2" data-reveal style="margin-bottom:clamp(32px,4vw,48px);max-width:24ch">One at a time, in order</h2>
+
+    <div class="stage-row" data-reveal>
+      <span class="when">Late 2026</span>
+      <p>Turn the balcony output into a number. Narrow the parts down to one choice. Publish the first write up.</p>
+    </div>
+    <div class="stage-row" data-reveal>
+      <span class="when">No date yet</span>
+      <p>Buy the parts as soon as there is money and build the first system. Publish the whole process including the receipts.</p>
+    </div>
+    <div class="stage-row" data-reveal>
+      <span class="when">After that</span>
+      <p>If somebody wants to build the same thing, build it with them. Neighbour to neighbour trading waits on the regulation.</p>
+    </div>
+
+    <p class="note">Where I am not confident about a date, I have written that I am not confident. It moves with the money.</p>
+  </div>
+</section>
+
+<section id="faq" class="band rule">
+  <div class="inner">
+    <span class="eyebrow" data-reveal>Questions</span>
+    <h2 class="h2" data-reveal style="margin-bottom:clamp(34px,4vw,52px);max-width:24ch">Answered in advance</h2>
+    <div class="qa" data-reveal-group>
+      <div>
+        <h4>Do you know anything about electricity?</h4>
+        <p>No. I have never studied electronics. So I write down the parts that people who know this already skip over. A record written by someone who does not know reaches other people who do not know.</p>
+      </div>
+      <div>
+        <h4>Is this a company?</h4>
+        <p>No. No legal entity, no team. One person. NODOS is the name I keep the things I build under.</p>
+      </div>
+      <div>
+        <h4>Does this work without a roof?</h4>
+        <p>I do not have a roof either. One south facing balcony is the starting point, which is exactly why this should be useful to people living in apartments.</p>
+      </div>
+      <div>
+        <h4>What does it cost?</h4>
+        <p>I do not know yet. Once the parts are bought I will publish the receipts. Naming a figure before buying anything is a guess, not information.</p>
+      </div>
+      <div>
+        <h4>Can you sell the surplus?</h4>
+        <p>Selling directly to a neighbour is currently blocked by regulation here. I treat it as roughly a five year problem. Until then only the making and the using.</p>
+      </div>
+      <div>
+        <h4>What about cloudy days and night?</h4>
+        <p>You draw from the grid, exactly as now. This is a beginning, not independence, and it seems better to say so at the start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="inner">
+    <div data-reveal>
+      <h2 class="h2">If you are trying the same thing, write to me</h2>
+      <p class="lede">I cannot install anything for you. I have no licence and no experience. What I can do is share everything I have found out, including the parts that turned out to be wrong.</p>
+      <a href="mailto:nodos.kr@gmail.com" class="btn btn-yellow" style="display:inline-block;margin-top:26px">Send an email</a>
+    </div>
+    <div class="meta" data-reveal>
+      <div>
+        <span class="k">Contact</span>
+        <p><a href="mailto:nodos.kr@gmail.com" style="font-weight:600">nodos.kr@gmail.com</a><br>One person, so replies may take a while</p>
+      </div>
+      <div>
+        <span class="k">Notes</span>
+        <p>The study notes are in Korean at<br><a href="../study/index.html" style="font-weight:600">nodos.kr/study</a></p>
+      </div>
+      <div>
+        <span class="k">Right now</span>
+        <p>0 systems built<br>2 study notes published</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span class="logo"><span class="dot"></span>NODOS</span>
+    <a href="#why">Why now</a>
+    <a href="#faq">Questions</a>
+    <a href="#contact">Contact</a>
+    <a href="../index.html">한국어</a>
+    <span class="stamp">© 2026 NODOS</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  const EASE = 'opacity .75s cubic-bezier(.2,.65,.2,1), transform .75s cubic-bezier(.2,.65,.2,1)';
+
+  [...document.querySelectorAll('[data-hero]')]
+    .sort((a, b) => +a.dataset.hero - +b.dataset.hero)
+    .forEach((el, i) => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = EASE;
+      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, 90 + i * 130);
+    });
+
+  const targets = [];
+  document.querySelectorAll('[data-reveal]').forEach((el) => targets.push([el, 0]));
+  document.querySelectorAll('[data-reveal-group]').forEach((g) => {
+    [...g.children].forEach((el, i) => targets.push([el, i * 90]));
+  });
+  targets.forEach(([el]) => { el.style.opacity = '0'; el.style.transform = 'translateY(18px)'; el.style.transition = EASE; });
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      setTimeout(() => { e.target.style.opacity = '1'; e.target.style.transform = 'none'; }, +(e.target.dataset.revealDelay || 0));
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+  targets.forEach(([el, d]) => { el.dataset.revealDelay = String(d); io.observe(el); });
+
+  const cio = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target; cio.unobserve(el);
+      const to = parseFloat(el.dataset.count), dec = +(el.dataset.decimals || 0), start = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - start) / 1100);
+        el.textContent = (to * (1 - Math.pow(1 - p, 3))).toFixed(dec);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach((el) => cio.observe(el));
+
+  document.querySelectorAll('[data-tilt]').forEach((el) => {
+    el.addEventListener('pointerenter', () => { el.style.transformStyle = 'preserve-3d'; el.style.willChange = 'transform'; });
+    el.addEventListener('pointermove', (ev) => {
+      const r = el.getBoundingClientRect();
+      const px = (ev.clientX - r.left) / r.width - 0.5, py = (ev.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `perspective(900px) rotateY(${px * 5}deg) rotateX(${-py * 4}deg) translateZ(6px)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = 'none'; el.style.willChange = 'auto'; });
+  });
+
+  const layers = [...document.querySelectorAll('[data-parallax]')];
+  if (layers.length) {
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0; const y = scrollY;
+        layers.forEach((el) => { el.style.transform = `translate3d(0, ${(y * parseFloat(el.dataset.parallax)).toFixed(1)}px, 0)`; });
+      });
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+})();
+</script>
+
+</body>
+</html>
