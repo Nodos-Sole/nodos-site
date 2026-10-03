@@ -1,2 +1,32 @@
 .vercel
 *.bak
+
+.vercel
+
+# --- 맥 이관 보강 (2026-10-03) ---
+node_modules/
+.next/
+dist/
+build/
+out/
+.env
+.env.*
+!.env.example
+!.env.local.example
+.DS_Store
+._*
+Thumbs.db
+*.log
+
+# --- 비밀키 공통 차단 (2026-10-03) ---
+key.json
+credentials.json
+token.json
+*service-account*.json
+*serviceaccount*.json
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+.claude/settings.local.json

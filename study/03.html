@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>제3강. 1암페어는 몇 개인가 · NODOS 공부</title>
+<meta name="description" content="전류와 전압과 전력을 물 비유가 아니라 숫자로 다시 봅니다. 1암페어가 전자 몇 개인지, 왜 자유전자가 있는 물질만 전기를 통하는지.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;600;700&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="study.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="../index.html"><span class="dot"></span>NODOS<span class="latin">전기</span></a>
+    <a href="index.html">공부 목록</a>
+    <a href="../index.html">처음으로</a>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <span class="kicker">공부 03 / STUDY 03</span>
+    <h1>1암페어는 몇 개인가</h1>
+    <p class="standfirst">제1강에서 전기를 물로 바꿔 이해했습니다. 비유는 거기까지입니다. 이번에는 물을 치우고 숫자로 봅니다. 전자가 실제로 몇 개 지나가는지, 왜 구리는 통하고 고무는 안 통하는지, 그리고 스펙표에 적힌 단위를 어떻게 뒤집어 계산하는지.</p>
+    <p class="byline">2026년 9월 · 읽는 데 약 10분</p>
+  </div>
+</header>
+
+<article>
+<div class="wrap">
+
+  <h2>1. 왜 구리는 통하고 고무는 안 통하는가</h2>
+
+  <p>제1강에서 전선 안에 전자가 이미 가득 차 있다고 썼습니다. 그런데 왜 어떤 물질에는 차 있고 어떤 물질에는 없을까요. 여기서부터가 진짜 시작입니다.</p>
+
+  <p>모든 물질은 원자로 되어 있습니다. 원자 가운데에 원자핵이 있고, 그 둘레를 전자가 돕니다. 원자핵은 플러스, 전자는 마이너스라서 서로 당깁니다. 그래서 대부분의 전자는 자기 원자에 붙잡혀 있습니다.</p>
+
+  <p><strong>그런데 금속은 다릅니다.</strong> 구리 같은 금속은 원자마다 바깥쪽 전자 하나가 거의 묶여 있지 않습니다. 붙잡는 힘이 약해서 옆 원자로, 또 그 옆으로 자유롭게 옮겨 다닙니다. 이걸 <strong>자유전자</strong>라고 부릅니다.</p>
+
+  <figure>
+    <svg viewBox="0 0 700 250" role="img" aria-label="도체와 부도체의 차이. 구리 원자들 사이에는 자유전자가 떠다니고, 고무 원자에서는 전자가 원자에 붙잡혀 있다">
+      <!-- 도체 -->
+      <text x="175" y="28" text-anchor="middle" font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="14" font-weight="600" fill="#101418">도체 (구리)</text>
+      <g stroke="#101418" stroke-width="2" fill="none">
+        <circle cx="80" cy="90" r="17"/><circle cx="175" cy="90" r="17"/><circle cx="270" cy="90" r="17"/>
+        <circle cx="80" cy="160" r="17"/><circle cx="175" cy="160" r="17"/><circle cx="270" cy="160" r="17"/>
+      </g>
+      <g fill="#101418" font-family="Figtree, sans-serif" font-size="13" text-anchor="middle">
+        <text x="80" y="95">+</text><text x="175" y="95">+</text><text x="270" y="95">+</text>
+        <text x="80" y="165">+</text><text x="175" y="165">+</text><text x="270" y="165">+</text>
+      </g>
+      <g fill="#ffd12e" stroke="#101418" stroke-width="1.5">
+        <circle cx="126" cy="72" r="7"/><circle cx="222" cy="112" r="7"/><circle cx="128" cy="140" r="7"/>
+        <circle cx="220" cy="178" r="7"/><circle cx="60" cy="126" r="7"/><circle cx="250" cy="60" r="7"/>
+      </g>
+      <text x="175" y="215" text-anchor="middle" font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="13" fill="#43484d">전자가 원자 사이를 자유롭게 떠돕니다</text>
+
+      <line x1="350" y1="45" x2="350" y2="200" stroke="#cfd1cb" stroke-width="1.5"/>
+
+      <!-- 부도체 -->
+      <text x="525" y="28" text-anchor="middle" font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="14" font-weight="600" fill="#101418">부도체 (고무)</text>
+      <g stroke="#101418" stroke-width="2" fill="none">
+        <circle cx="430" cy="90" r="17"/><circle cx="525" cy="90" r="17"/><circle cx="620" cy="90" r="17"/>
+        <circle cx="430" cy="160" r="17"/><circle cx="525" cy="160" r="17"/><circle cx="620" cy="160" r="17"/>
+      </g>
+      <g fill="#101418" font-family="Figtree, sans-serif" font-size="13" text-anchor="middle">
+        <text x="430" y="95">+</text><text x="525" y="95">+</text><text x="620" y="95">+</text>
+        <text x="430" y="165">+</text><text x="525" y="165">+</text><text x="620" y="165">+</text>
+      </g>
+      <g fill="#ffd12e" stroke="#101418" stroke-width="1.5">
+        <circle cx="430" cy="66" r="7"/><circle cx="525" cy="66" r="7"/><circle cx="620" cy="66" r="7"/>
+        <circle cx="430" cy="184" r="7"/><circle cx="525" cy="184" r="7"/><circle cx="620" cy="184" r="7"/>
+      </g>
+      <text x="525" y="215" text-anchor="middle" font-family="Figtree, 'Noto Sans KR', sans-serif" font-size="13" fill="#43484d">전자가 자기 원자에 꽉 붙잡혀 있습니다</text>
+    </svg>
+    <figcaption>전기가 통하느냐 아니냐는 재료의 문제가 아니라 <strong>전자가 풀려 있느냐</strong>의 문제입니다.</figcaption>
+  </figure>
+
+  <div class="key">
+    <span class="t">그래서 이렇게 갈립니다</span>
+    <p><strong>도체</strong>는 자유전자가 많은 물질입니다. 구리, 알루미늄, 금, 은.</p>
+    <p><strong>부도체</strong>는 자유전자가 거의 없는 물질입니다. 고무, 유리, 플라스틱.</p>
+    <p>전선이 <strong>구리 심에 고무 껍질</strong>인 이유가 이겁니다. 안쪽은 통하고 바깥쪽은 막아야 하니까요.</p>
+  </div>
+
+  <p>그리고 이 둘 사이에 <strong>반도체</strong>가 있습니다. 평소에는 안 통하는데 조건을 주면 통하는 물질입니다. 실리콘이 대표입니다. 태양광 패널이 실리콘으로 만들어지는 이유이자, 이 공부의 5강에서 다룰 이야기입니다.</p>
+
+  <h2>2. 1암페어는 정확히 몇 개인가</h2>
+
+  <p>이제 세는 이야기입니다. 전자 하나가 가진 전하량은 이미 정해져 있습니다. 사람이 정한 게 아니라 자연이 그렇습니다.</p>
+
+  <div class="key">
+    <span class="t">기본 전하량</span>
+    <p>전자 한 개 = 0.0000000000000000001602 쿨롱</p>
+    <p>줄여 쓰면 1.602 × 10<sup>-19</sup> C</p>
+  </div>
+
+  <p>너무 작아서 감이 안 옵니다. 그래서 뒤집어 봅니다. 1쿨롱은 전자 몇 개일까요.</p>
+
+  <div class="key">
+    <span class="t">1쿨롱</span>
+    <p>= 전자 <strong>6,240,000,000,000,000,000개</strong></p>
+    <p>= 624경 개</p>
+  </div>
+
+  <p><strong>쿨롱은 결국 전자를 세는 묶음 단위입니다.</strong> 계란 한 판이 30개인 것처럼, 전자 624경 개가 1쿨롱입니다.</p>
+
+  <p>여기까지 오면 암페어의 정의가 그냥 나옵니다.</p>
+
+  <div class="key">
+    <span class="t">전류 (I)</span>
+    <p>I = Q ÷ t</p>
+    <p><strong>1A = 1초에 1쿨롱이 지나가는 것</strong></p>
+  </div>
+
+  <p>그러니까 휴대폰을 2A로 충전하고 있다면, 케이블 안에서 <strong>1초마다 전자 1,248경 개</strong>가 지나가고 있는 겁니다.</p>
+
+  <div class="aside">
+    <p>전류 기호가 왜 C나 A가 아니라 I인지 궁금할 수 있습니다. 프랑스어 intensité, 세기라는 말에서 왔습니다. 이유는 없고 관습입니다.</p>
+  </div>
+
+  <h2>3. 그런데 전자는 걷는 것보다 느립니다</h2>
+
+  <p>제1강에서 놀랐던 자리를 이제 숫자로 볼 수 있습니다.</p>
+
+  <p>초당 624경 개가 지나간다니 엄청나게 빠를 것 같습니다. 그런데 아닙니다. <strong>전자 하나하나는 한 시간에 수십 센티미터쯤 움직입니다.</strong></p>
+
+  <p>이게 모순이 아닌 이유는 <strong>전선 안이 이미 꽉 차 있기 때문</strong>입니다. 구리 1세제곱센티미터 안에 자유전자가 약 8.5 × 10<sup>22</sup>개 들어 있습니다. 8해 5천경 개입니다.</p>
+
+  <div class="key">
+    <span class="t">그래서 이렇게 됩니다</span>
+    <p>전자가 아주 천천히 움직여도, <strong>워낙 많아서</strong> 한 지점을 지나는 개수는 어마어마합니다.</p>
+    <p>불이 즉시 켜지는 이유는 전자가 빨라서가 아니라 <strong>밀림이 즉시 전달되기 때문</strong>입니다. 밀림은 빛의 속도에 가깝게 전달됩니다.</p>
+  </div>
+
+  <p>기차를 생각하면 됩니다. 맨 앞 칸이 출발하면 맨 뒤 칸도 거의 동시에 움직입니다. 그렇다고 맨 뒤 칸이 순간이동한 건 아닙니다. 연결이 되어 있어서 밀림이 전달된 것뿐입니다.</p>
+
+  <h2>4. 전압을 다시 봅니다</h2>
+
+  <p>제1강에서는 전압을 수압이라고 했습니다. 물을 치우면 이렇게 됩니다.</p>
+
+  <div class="key">
+    <span class="t">전압 (V)</span>
+    <p>V = 에너지 ÷ 전하</p>
+    <p><strong>1V = 전하 1쿨롱을 옮길 때 1줄의 에너지를 준다는 뜻</strong></p>
+  </div>
+
+  <p>여기서 중요한 게 하나 나옵니다. <strong>전압은 항상 두 지점 사이의 차이입니다.</strong> "여기 전압이 5V다"라는 말은 사실 정확하지 않습니다. "이 점과 저 점 사이가 5V"가 맞습니다.</p>
+
+  <p>건전지에 왜 플러스와 마이너스가 둘 다 있는지, 왜 한쪽만 연결하면 아무 일도 안 일어나는지가 여기서 설명됩니다. 높은 곳과 낮은 곳이 있어야 흐르니까요.</p>
+
+  <div class="aside">
+    <p>새가 고압선에 앉아도 감전되지 않는 이유가 이것입니다. 두 발이 같은 선에 있으면 두 지점 사이에 전압 차이가 거의 없습니다. 만약 한 발은 전선에, 다른 발은 땅에 닿으면 그때 차이가 생깁니다.</p>
+  </div>
+
+  <h2>5. 세 숫자를 곱하고 나누기</h2>
+
+  <p>이제 스펙표를 읽을 준비가 됐습니다. 필요한 식은 두 개뿐입니다.</p>
+
+  <div class="key">
+    <span class="t">외울 것 둘</span>
+    <p><strong>V × A = W</strong> (밀어주는 힘 × 흐르는 양 = 하는 일의 세기)</p>
+    <p><strong>W × 시간 = Wh</strong> (세기 × 시간 = 쌓인 양)</p>
+  </div>
+
+  <p>그런데 실제 배터리 스펙표를 보면 Wh가 아니라 이렇게 적혀 있는 경우가 많습니다.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>스펙표에 적힌 것</th><th>뜻</th></tr></thead>
+    <tbody>
+      <tr><td>25.6V</td><td>이 배터리가 밀어주는 힘</td></tr>
+      <tr><td>20Ah</td><td>20A를 1시간 흘릴 수 있는 양</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Ah는 전류 × 시간입니다. 여기에 전압을 곱하면 우리가 아는 Wh가 됩니다.</p>
+
+  <div class="key">
+    <span class="t">변환식</span>
+    <p><strong>V × Ah = Wh</strong></p>
+    <p>25.6V × 20Ah = <strong>512Wh</strong></p>
+  </div>
+
+  <p>이 변환을 못 하면 제품 두 개를 비교할 수 없습니다. 어떤 회사는 Wh로 적고 어떤 회사는 Ah로 적기 때문입니다.</p>
+
+  <h2>6. 그리고 스펙표는 그대로 믿으면 안 됩니다</h2>
+
+  <p>512Wh 배터리로 60W 노트북을 쓰면 몇 시간일까요. 계산은 이렇습니다.</p>
+
+  <p>512 ÷ 60 = 약 8.5시간</p>
+
+  <p><strong>실제로는 8.5시간이 안 나옵니다.</strong> 두 가지가 중간에서 빠져나갑니다.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>어디서</th><th>얼마나</th><th>왜</th></tr></thead>
+    <tbody>
+      <tr><td>인버터</td><td>10~15%</td><td>배터리의 직류를 콘센트용 교류로 바꾸며 열로 샙니다</td></tr>
+      <tr><td>배터리 보호</td><td>10~20%</td><td>끝까지 다 쓰면 수명이 줄어서 제조사가 미리 막아둡니다</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="key">
+    <span class="t">실전 어림값</span>
+    <p><strong>표시 용량 × 0.8 정도가 실제로 쓸 수 있는 양</strong></p>
+    <p>512Wh × 0.8 = 약 410Wh → 노트북 <strong>6~7시간</strong></p>
+  </div>
+
+  <p>이 0.8이 스펙표의 숫자와 현실 사이의 간격입니다. 앞으로 계산할 때마다 붙게 됩니다.</p>
+
+  <h2>7. 단위 앞의 글자</h2>
+
+  <p>마지막으로 접두어입니다. 전기에서 다루는 값의 범위가 극단적이라 매번 0을 세지 않으려고 묶음 이름을 붙였습니다.</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>글자</th><th>배수</th><th>예</th></tr></thead>
+    <tbody>
+      <tr><td>G (기가)</td><td>10억 배</td><td>발전소 출력 1GW</td></tr>
+      <tr><td>M (메가)</td><td>100만 배</td><td>소형 원자로 300MW</td></tr>
+      <tr><td>k (킬로)</td><td>1,000배</td><td>전기요금 고지서의 kWh</td></tr>
+      <tr><td>m (밀리)</td><td>1/1,000</td><td>500mA = 0.5A</td></tr>
+      <tr><td>μ (마이크로)</td><td>1/100만</td><td>반도체 안의 전류</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="key">
+    <span class="t">대소문자를 지켜야 합니다</span>
+    <p>M은 100만 배, m은 1/1,000입니다. <strong>1MW와 1mW는 10억 배 차이</strong>입니다.</p>
+  </div>
+
+  <h2>이번 강에서 손에 넣은 것</h2>
+
+  <ul>
+    <li>전기가 통하는 건 재료의 문제가 아니라 <strong>자유전자가 있느냐</strong>의 문제다</li>
+    <li>1A는 <strong>1초에 전자 624경 개</strong>가 지나가는 것이다</li>
+    <li>전자는 느리지만 <strong>이미 꽉 차 있어서</strong> 밀림이 즉시 전달된다</li>
+    <li>전압은 한 점의 값이 아니라 <strong>두 점 사이의 차이</strong>다</li>
+    <li>V × Ah = Wh. <strong>이 변환을 못 하면 제품 비교를 못 한다</strong></li>
+    <li>스펙표에 × 0.8. <strong>인버터와 배터리 보호가 먹는 몫</strong></li>
+  </ul>
+
+  <div class="next">
+    <span class="k">다음 강 · 준비 중</span>
+    <a href="index.html">제4강. 배터리는 전기를 담지 않습니다</a>
+    <p style="margin-top:14px;font-size:15px;color:var(--ink-3)">배터리 안에 전기가 고여 있는 게 아닙니다. 화학으로 바꿔 두었다가 다시 꺼내는 것입니다. 그리고 그 화학이 왜 겨울에 약해지는지도 같이 봅니다.</p>
+  </div>
+
+</div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <a href="../index.html">처음으로</a>
+    <a href="index.html">공부 목록</a>
+    <a href="mailto:nodos.kr@gmail.com">nodos.kr@gmail.com</a>
+    <span class="sp">© 2026 NODOS</span>
+  </div>
+</footer>
+
+</body>
+</html>
